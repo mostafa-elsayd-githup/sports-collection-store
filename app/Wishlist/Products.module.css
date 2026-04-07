@@ -4,7 +4,9 @@
   margin-bottom: 150px;
 
 }
-
+.title {
+  margin-top: 15px;
+}
 .wishlist_header {
   display: flex;
   align-items: flex-end;
@@ -22,11 +24,32 @@
   font-size: 1.2rem;
   font-style: normal;
 }
+.image{
+  cursor: pointer;
+  mask-image: linear-gradient(var(--color-main) 90%, transparent);
+}
 .wishlist_grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
+.card {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-color: var(--color-primary);
+  transition: all 0.2s ease-in-out;
+
+  border-radius: 15px;
+}
+.card:hover {
+  transform: translateY(-10px);
+  z-index: 200;
+  box-shadow:
+    0 17px 40px -12px var(--color-secondary),
+    0 18px 6px -18px var(--color-secondary);
+    border-color: var(--color-main);
+  }
 /* start-loader */
 
 .overlay_loader {
@@ -35,12 +58,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--text-fetch); /* طبقة شفافة */
+  background-color: var(--text-fetch); 
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  pointer-events: none; /* عشان ما يمنعش الـ hover لو ظهر */
+  pointer-events: none; 
 }
 
 .halfCircleLoader {
@@ -91,14 +114,8 @@
   position: relative;
   background-color: var(--color-primary);
   aspect-ratio: 1/1;
+  margin-bottom: 20px;
 }
-
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .remove_btn {
   position: absolute;
   top: 10px;
@@ -113,26 +130,77 @@
   align-items: center;
   justify-content: center;
 }
-.info {
-  padding: 15px 5px;
-}
-
-.p_name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-primary);
-}
-
-.p_price {
-  font-size: 14px;
+.word {
   font-weight: 700;
-  color: var(--color-primary);
+  position: absolute;
+  font-size: 14px;
+  top: -1px;
+  left: 13px;
 }
 
-.empty_state {
+.name {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--color-main);
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.little {
   text-align: center;
-  padding: 100px 0;
-  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  border: 1px solid #000;
+  align-items: center;
+  width: 56px;
+  height: 19px;
+  position: absolute;
+  top: 0;
+  left: -14px;
+  right: 0.5rem;
+  transform: rotate(323deg);
+}
+.word {
+  font-weight: 700;
+  position: absolute;
+  font-size: 14px;
+  top: -1px;
+  left: 13px;
+}
+.dis {
+  text-align: center;
+  background-color: var(--color-main);
+  color: var(--color-primary);
+  border-radius: 5%;
+  width: 45px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 4px 0 0;
+}
+.price {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--color-main);
+}
+.price_red {
+  color: var(--color-sale);
+}
+.category {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--color-primary);
+}
+.colors {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--color-secondary);
+}
+.made {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-main);
 }

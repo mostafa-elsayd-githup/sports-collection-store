@@ -8,8 +8,10 @@ import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons"; // قل
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons"; // شنطة تسوق (Solid)
 import { useActionState, useState } from "react";
 import { handelAction } from "./wishliestAction";
+import Link from "next/link";
 
 function Products({ wishlist }) {
+  console.log(wishlist);
   const [typeButton, settypeButoon] = useState("");
   const intialstate = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
@@ -35,13 +37,11 @@ function Products({ wishlist }) {
         {wishlist.length > 0 ? (
           <div className={styles.wishlist_grid}>
             {wishlist.map((product) => (
-              <div key={product.id}>
+              <div className={styles.card} key={product.id}>
                 <div className={styles.image_container}>
-                  <Card.Img
-                    src={product.image}
-                    alt={product.name}
-                    className={styles.img}
-                  />
+                  <div className={styles.image}>
+                    <Card.Img src={product.image} alt={product.name} />
+                  </div>
 
                   <form
                     action={formAction}
@@ -101,10 +101,49 @@ function Products({ wishlist }) {
                     </button>
                   </form>
                 </div>
-                <div className={styles.info}>
-                  <h3 className={styles.p_name}>{product.name}</h3>
-                  <p className={styles.p_price}>EGP {product.price}</p>
-                </div>
+                <Card.Body className="p-3">
+                  {product.Inventory === 0 ? (
+                    <span className={styles.little}>
+                      <span className={styles.word}>OUT</span>
+                    </span>
+                  ) : product.Inventory <= 5 ? (
+                    <span className={styles.little}>
+                      <span className={styles.word}>LOW</span>
+                    </span>
+                  ) : null}
+                  <Link
+                    href={`/Components/what_is_hot_componante/terrex/${product.id}`}
+                  >
+                    <h5 className={styles.name}>{product.name}</h5>
+                  </Link>
+                  {/* السعر الأساسي */}
+                  <span
+                    className={`${styles.price} ${
+                      product.oldPrice ? styles.price_red : ""
+                    }`}
+                  >
+                    EGP {product.price}
+                  </span>
+                  {product.oldPrice && (
+                    <>
+                      <span className={styles.old_price}>
+                        EGP {product.oldPrice}
+                      </span>
+                      <input
+                        type="hidden"
+                        name="old_price"
+                        value={product.oldPrice}
+                      />
+                    </>
+                  )}
+                  <p className={styles.category}>{product.category}</p>
+                  <p className={styles.colors}>
+                    {product.url?.length ? `Colors: ${product.url.length}` : ""}
+                  </p>
+                  <p className={styles.made}>
+                    {product.made ? product.made : ""}
+                  </p>
+                </Card.Body>
               </div>
             ))}
           </div>
