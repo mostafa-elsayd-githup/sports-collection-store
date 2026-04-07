@@ -1,0 +1,64 @@
+.notFoundContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  background-color: #fff;
+}
+
+.errorCode {
+  font-size: 8rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -5px;
+  font-style: italic; /* لإعطاء إيحاء رياضي */
+}
+
+.notFoundTitle {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.notFoundText {
+  color: #767677;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.notFoundActions {
+  display: flex;
+  gap: 15px;
+}
+
+.homeButton {
+  background-color: #000;
+  color: #fff;
+  padding: 15px 30px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+
+.backButton {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 15px 30px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+
+.homeButton:hover, .backButton:hover {
+  background-color: #767677;
+  color: #fff;
+  border-color: #767677;
+}

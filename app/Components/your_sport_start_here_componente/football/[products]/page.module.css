@@ -1,0 +1,160 @@
+.wrapper {
+  padding-top: 80px; 
+
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 20px;
+  align-items: center;
+}
+
+/* معرض الصور */
+.imageGallery {
+  flex: 1.5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.mainImage {
+  width: 100%;
+  background-color: #ebedee;
+  object-fit: cover;
+}
+
+/* قسم المعلومات */
+.infoSection {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  width: 100%;
+}
+
+.category {
+  font-size: 14px;
+  color: #767677;
+  text-transform: uppercase;
+}
+
+.productName {
+  font-size: 36px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 10px 0;
+  letter-spacing: -1px;
+  color: #000;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-right: 1rem;
+    color: #e32b2b;
+}
+.oldPrice {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #777777;
+  text-decoration: line-through;
+
+}
+.colors_available{
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.smil_image{
+  display: flex;
+  gap: 5px;
+}
+/* المقاسات */
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #777777;
+}
+
+.sizeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 5px;
+  margin-bottom: 30px;
+}
+.sizeSection{
+  
+  margin-top: 10px;
+}
+
+.sizeBox {
+  border: 1px solid #ebedee;
+  background: white;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #000;
+}
+
+.sizeBox:hover {
+  border-color: #000;
+  font-weight: bold;
+}
+
+/* الأزرار */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 18px;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.addToCartBtn:hover {
+  color: #767677;
+}
+
+.wishlistBtn {
+  width: 55px;
+  background: white;
+  border: 1px solid #000;
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 991px) {
+  .container {
+    flex-direction: column;
+  }
+  .infoSection {
+    position: relative;
+    top: 0;
+  }
+  .productName {
+    font-size: 28px;
+  }
+}

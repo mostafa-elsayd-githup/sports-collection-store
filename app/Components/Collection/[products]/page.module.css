@@ -1,0 +1,246 @@
+.wrapper {
+  padding-top: 80px;
+}
+
+.container {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 20px;
+}
+
+/* معرض الصور */
+.imageWrapper {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid var(--color-main);
+  background-color: var(--color-main);
+}
+.imageGallery {
+  flex: 1.5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.mainImage {
+  width: 100%;
+  background-color: var(--color-main);
+  object-fit: cover;
+}
+
+/* قسم المعلومات */
+.infoSection {
+  flex: 1;
+  height: fit-content;
+  width: 100%;
+  text-align: start;
+}
+
+.category {
+  font-size: 14px;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
+.productName {
+  font-size: 36px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 10px 0;
+  letter-spacing: -1px;
+  color: var(--color-primary);
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-right: 1rem;
+  color: var(--color-primary);
+}
+.oldPrice {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+.colors_available {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.smil_image {
+  display: flex;
+  gap: 5px;
+}
+/* المقاسات */
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: var(--color-secondary);
+}
+
+.sizeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 5px;
+  margin-bottom: 30px;
+}
+.sizeSection {
+  margin-top: 10px;
+}
+
+.sizeBox {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--color-primary)
+}
+
+.sizeBox:hover {
+  border-color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* الأزرار */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  background-color: var(--color-primary);
+  color: var(--color-main);
+  border: none;
+  padding: 18px;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.wishlistBtn {
+  width: 55px;
+  background:var(--color-main);
+  border: 1px solid var(--color-primary);
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+/* RatingStars */
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+  font-family: "Inter", sans-serif;
+}
+/* AI code  */
+.starsContainer {
+  position: relative; /* ضروري عشان الطبقات اللي جوه تركب فوق بعض */
+  display: inline-block;
+  font-size: 22px; /* حجم النجوم */
+  line-height: 1;
+  letter-spacing: 2px; /* مسافة بسيطة بين النجوم بتخلي شكلها أشيك */
+  user-select: none; /* عشان المستخدم ميعرفش يحدد النجوم كأنها نص */
+}
+
+.starsEmpty {
+  color: var(--border-color); /* لون الرمادي الهادي للنجوم الفارغة */
+}
+
+.starsFilled {
+  position: absolute; /* بتخلي النجوم الذهبية فوق الرمادية بالظبط */
+  top: 0;
+  left: 0;
+  color: var(--rating-color); /* اللون الذهبي الخاص بالتقييمات */
+  overflow: hidden; /* أهم سطر: هو ده اللي بيقص النجوم بناءً على الـ width */
+  white-space: nowrap; /* بيمنع النجوم تنزل سطر جديد لما الـ width يقل */
+  transition: width 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); /* أنيميشن ناعم لما الصفحة تفتح */
+}
+/*  */
+.ratingText {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.reviewsCount {
+  font-weight: 400;
+  color: var(--color-secondary);
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.reviewsCount:hover {
+  color: var(--color-primary);
+}
+.trustSection {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color); /* خط فاصل خفيف فوق القسم */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trustIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.trustText {
+  color: var(--color-primary);
+  line-height: 1.4;
+  font-family: "AdihausDIN", sans-serif;
+  letter-spacing: 1px;
+}
+
+.trustItem:first-child .trustText {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.icnodis {
+  color: var(--color-primary);
+}
+/* التجاوب مع الموبايل */
+@media (max-width: 991px) {
+  .container {
+    flex-direction: column;
+  }
+  .infoSection {
+    position: relative;
+    top: 0;
+  }
+  .productName {
+    font-size: 28px;
+  }
+}
