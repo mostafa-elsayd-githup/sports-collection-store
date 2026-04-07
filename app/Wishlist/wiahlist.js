@@ -37,12 +37,14 @@ function Products({ wishlist }) {
         {wishlist.length > 0 ? (
           <div className={styles.wishlist_grid}>
             {wishlist.map((product) => (
-              <div className={styles.card} key={product.id}>
+              <Card className={styles.card} key={product.id}>
                 <div className={styles.image_container}>
-                  <div className={styles.image}>
-                    <Card.Img src={product.image} alt={product.name} />
-                  </div>
-
+                  <Card.Img
+                    name="image"
+                   className={styles.image}
+                    src={product.image}
+                    alt={product.name}
+                  />
                   <form
                     action={formAction}
                     onClick={(e) => e.stopPropagation()}
@@ -144,7 +146,7 @@ function Products({ wishlist }) {
                     {product.made ? product.made : ""}
                   </p>
                 </Card.Body>
-              </div>
+              </Card>
             ))}
           </div>
         ) : (
