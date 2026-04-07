@@ -8,7 +8,7 @@ import NavAction from "../../../../Navbar/NavAction";
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
-      cache: "no-store", 
+      cache: "no-store",
       next: { tags: ["wishlist"] },
     });
     if (!res.ok) return [];
@@ -20,10 +20,9 @@ async function getWishlist() {
 
 async function gitdata() {
   try {
-    const res = await fetch(
-      `http://localhost:1200/your_sport_start_hear_gym`,
-      { next: { revalidate: 60 } },
-    );
+    const res = await fetch(`http://localhost:1200/your_sport_start_hear_gym`, {
+      next: { revalidate: 60 },
+    });
     if (!res.ok) {
       return undefined;
     } else if (res.ok) {
@@ -67,11 +66,26 @@ async function Product() {
             </span>
           </span>
           <h1 className={styles.title}>
-            Adidaes Running Collection{" "}
+            Gym & Training Collection{" "}
             <span style={{ fontSize: "15px", color: "#7777" }}>
               [ {data.length} ]
             </span>
           </h1>
+          <p className={styles.prag}>
+            Welcome to all the gym gear you&apos;ll ever need. Discover premium
+            training kit for men, women and children in the best-selling adidas
+            range. Our fitness designs are made for performance and comfort with
+            pieces ranging from high-end designer collaborations to activewear
+            staples. Browse to discover head-to-toe gym gear for every workout
+            from cardio to resistance, HIIT to strength and everything in
+            between. Our gym and training range is infused with multiple
+            technologies to keep you training outdoors in all weathers and
+            challenging yourself at the gym. Choose designs that are breathable,
+            sweat-wicking, lightweight to keep you comfortable, in cuts that
+            deliver distraction-free comfort via clothing with great support,
+            coverage and freedom of movement. With looks this good, nothing need
+            keep you from your next session. <button></button>
+          </p>
         </div>
         <div className={styles.products}>
           {data &&

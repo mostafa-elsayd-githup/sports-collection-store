@@ -71,8 +71,8 @@ async function Product() {
             </span>
           </span>
           <h1 className={styles.title}>
-            Adidaes Running Collection{" "}
-            <span className={styles.Productlenght}>[ {data.length} ]</span>
+           Sports Outdoor Shoes {""}
+            <span className={styles.Productlenght}> [{data.length} ]</span>
           </h1>
         </div>
 

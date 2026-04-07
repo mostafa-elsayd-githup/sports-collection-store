@@ -41,7 +41,7 @@ function Products({ wishlist }) {
                 <div className={styles.image_container}>
                   <Card.Img
                     name="image"
-                   className={styles.image}
+                    className={styles.image}
                     src={product.image}
                     alt={product.name}
                   />
@@ -50,23 +50,35 @@ function Products({ wishlist }) {
                     onClick={(e) => e.stopPropagation()}
                     className={styles.overlay}
                   >
-                    <input type="hidden" name="id" value={product.id} />
-                    <input type="hidden" name="name" value={product.name} />
-                    <input type="hidden" name="price" value={product.price} />
-                    <input type="hidden" name="image" value={product.image} />
+                    <input type="hidden" name="id" value={product.id || ""} />
+                    <input
+                      type="hidden"
+                      name="name"
+                      value={product.name || ""}
+                    />
+                    <input
+                      type="hidden"
+                      name="price"
+                      value={product.price || ""}
+                    />
+                    <input
+                      type="hidden"
+                      name="image"
+                      value={product.image || ""}
+                    />
 
                     <input
                       type="hidden"
                       name="old_price"
-                      value={product.old_price}
+                      value={product.old_price || ""}
                     />
                     <input
                       type="hidden"
                       name="category"
-                      value={product.category}
+                      value={product.category || ""}
                     />
-                    <input type="hidden" name="sizes" value={product.sizes} />
-                    <input type="hidden" name="intent" value={typeButton} />
+                    <input type="hidden" name="sizes" value={product.sizes || ""} />
+                    <input type="hidden" name="intent" value={typeButton || ""} />
                     <button
                       name="intent"
                       onMouseDown={() => settypeButoon("wishlist")}
@@ -118,7 +130,7 @@ function Products({ wishlist }) {
                   >
                     <h5 className={styles.name}>{product.name}</h5>
                   </Link>
-                  {/* السعر الأساسي */}
+                  {/* price*/}
                   <span
                     className={`${styles.price} ${
                       product.oldPrice ? styles.price_red : ""

@@ -1,3 +1,4 @@
+"use server"
 import NavBar from "./navbar";
 
 export default async function NavAction() {
@@ -10,7 +11,6 @@ export default async function NavAction() {
       next: { tags: ["wishlist"] },
     });
 
-    // التحقق إذا كان السيرفر رد بشكل سليم (200-299)
     if (!cartres.ok || !washlistres.ok) {
       throw new Error("السيرفر يعطي استجابة خاطئة");
     }
@@ -19,9 +19,8 @@ export default async function NavAction() {
     const countwashlist = await washlistres.json();
 
     return <NavBar cartCount={countcart} washlistCount={countwashlist} />;
-  } catch (err) {
-    console.error("Connection Refused:", err.message);
-    // بترجع القيم فاضيه بدل ما توقع الصفحه كلها
-    return <NavBar cartCount={[]} washlistCount={[]} />;
+  } catch (error) {
+    console.error("Connection Refused:", error.message);
+        return <NavBar cartCount={[]} washlistCount={[]} />;
   }
 }

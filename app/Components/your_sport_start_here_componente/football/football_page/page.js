@@ -8,7 +8,7 @@ import NavAction from "../../../../Navbar/NavAction";
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
-      cache: "no-store", 
+      cache: "no-store",
       next: { tags: ["wishlist"] },
     });
     if (!res.ok) return [];
@@ -67,7 +67,7 @@ async function Product() {
             </span>
           </span>
           <h1 className={styles.title}>
-            Adidaes Running Collection{" "}
+            Football Gear{" "}
             <span style={{ fontSize: "15px", color: "#7777" }}>
               [ {data.length} ]
             </span>

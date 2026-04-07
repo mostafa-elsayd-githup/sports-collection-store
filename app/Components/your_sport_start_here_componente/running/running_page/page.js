@@ -67,7 +67,7 @@ async function Product() {
             </span>
           </span>
           <h1 className={styles.title}>
-            Adidaes Running Collection{" "}
+            Running Collection {" "}
             <span style={{ fontSize: "15px", color: "#7777" }}>
               [ {data.length} ]
             </span>
