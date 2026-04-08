@@ -1,22 +1,32 @@
 "use client";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons"; // Regular heart icon
-import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons"; // Solid heart icon
+import {
+  faHeart as farHeart, faEye} from "@fortawesome/free-regular-svg-icons"; 
+import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons"; 
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import handleAction from "./ActionFile";
-const SingleProduct = ({ productItem, isfevorite}) => {
+import { useOpneing } from "../../../../RTK/storcontext";
+import { redirect,useRouter } from "next/navigation";
 
+const SingleProduct = ({ productItem, isfevorite }) => {
+  const router = useRouter()
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
   const [state, formAction, pending] = useActionState(
     handleAction,
     initialState,
   );
+  useEffect(()=>{
+    if(state?.state === 401){
+      redirect("/register")
+    }
+  }, [state , router])
   const [actionTypeState, setActionTypeState] = useState("");
+  const { setIsOpen, setSelectedProduct } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -34,14 +44,13 @@ const SingleProduct = ({ productItem, isfevorite}) => {
         onClick={(e) => e.stopPropagation()}
         action={formAction}
       >
-        
         {/*data for ActionFile*/}
         <input type="hidden" name="id" value={productItem.id} />
         <input type="hidden" name="image" value={productItem.image} />
         <input type="hidden" name="dis" value={productItem.dis} />
         <input type="hidden" name="name" value={productItem.name} />
         <input type="hidden" name="price" value={productItem.price} />
-        <input type="hidden" name="sizes" value={productItem.sizes} />
+        <input type="hidden" name="sizes" value={productItem.sizes[0]} />
         <input type="hidden" name="category" value={productItem.category} />
         <input type="hidden" name="actiontype" value={actionTypeState} />
         <button
@@ -65,7 +74,10 @@ const SingleProduct = ({ productItem, isfevorite}) => {
         <button
           type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("cart")}
+          onMouseDown={() => {
+            setIsOpen(true);
+            setSelectedProduct(productItem);
+          }}
           style={{
             background: "none",
             border: "none",
@@ -75,22 +87,37 @@ const SingleProduct = ({ productItem, isfevorite}) => {
             opacity: pending ? 0.1 : 1,
           }}
         >
-          <FontAwesomeIcon
-            icon={faBagShopping}
-          />
+          <FontAwesomeIcon icon={faBagShopping} className={styles.icon} />
+        </button>
+        <button
+          type="submit"
+          disabled={pending}
+          onMouseDown={() => setActionTypeState("eye")}
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            color: "#000",
+            opacity: pending ? 0.1 : 1,
+          }}
+        >
+          <FontAwesomeIcon icon={faEye} className={styles.icon} />
         </button>
       </form>
 
       <div style={{ position: "relative" }}>
-        <Link href={`/Components/what_is_hot_componante/simpsone/${productItem.id}`}>
+        <Link
+          href={`/Components/what_is_hot_componante/terrex/${productItem.id}`}
+        >
           <Card.Img
             name="image"
             variant="top"
             src={currentImg}
             alt={productItem.description}
-            // عند الوقوف بالماوس، نغير الصورة لهذا الكارت فقط
+    
             onMouseEnter={() => setCurrentImg(productItem.image_Hover)}
-            // عند خروج الماوس، نرجع الصورة الأصلية
+     
             className={styles.image}
           />
         </Link>
@@ -100,9 +127,11 @@ const SingleProduct = ({ productItem, isfevorite}) => {
       </div>
       {productItem.url && productItem.url.length > 0 && (
         <div className={styles.small_products}>
-          {productItem.url.map((style, index) => (
-            <div key={style.id + index} className={styles.small_img}>
-              <Link href={`/Components/what_is_hot_componante/simpsone/${productItem.id}`}>
+          {productItem.url.map((style) => (
+            <div key={style.id} className={styles.small_img}>
+              <Link
+                href={`/Components/what_is_hot_componante/terrex/${style.id}`}
+              >
                 <Card.Img
                   variant="top"
                   src={style.img_url}
@@ -114,7 +143,18 @@ const SingleProduct = ({ productItem, isfevorite}) => {
         </div>
       )}
       <Card.Body>
-        <Link href={`/Components/what_is_hot_componante/simpsone/${productItem.id}`}>
+        {productItem.Inventory === 0 ? (
+          <span className={styles.little}>
+            <span className={styles.word}>OUT</span>
+          </span>
+        ) : productItem.Inventory <= 5 ? (
+          <span className={styles.little}>
+            <span className={styles.word}>LOW</span>
+          </span>
+        ) : null}
+        <Link
+          href={`/Components/what_is_hot_componante/terrex/${productItem.id}`}
+        >
           <h5 className={styles.name}>{productItem.name}</h5>
         </Link>
         {/* السعر الأساسي */}
@@ -125,7 +165,7 @@ const SingleProduct = ({ productItem, isfevorite}) => {
         >
           EGP {productItem.price}
         </span>
-        {/* السعر القديم (يظهر فقط إذا وجد) */}
+
         {productItem.oldPrice && (
           <>
             <span className={styles.old_price}>EGP {productItem.oldPrice}</span>

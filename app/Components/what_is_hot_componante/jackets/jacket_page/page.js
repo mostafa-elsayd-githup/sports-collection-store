@@ -1,15 +1,15 @@
+"use server";
 import Link from "next/link";
 import styles from "./page.module.css";
 import SingleProduct from "./singelproduct";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
-import Footer from "../../../footer/Footre";
-import { Container } from "react-bootstrap";
+import MiniDrowp from "./minidrowp/minidrowp";
 
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
-      cache: "no-store", 
+      cache: "no-store",
       next: { tags: ["wishlist"] },
     });
     if (!res.ok) return [];
@@ -24,6 +24,9 @@ async function gitdata() {
     const res = await fetch(
       `http://localhost:1200/your_sport_start_hear_running`,
       { next: { revalidate: 60 } },
+      {
+        cache: "no-cache",
+      },
     );
     if (!res.ok) {
       return undefined;
@@ -68,12 +71,12 @@ async function Product() {
             </span>
           </span>
           <h1 className={styles.title}>
-            Adidaes Running Collection{" "}
-            <span style={{ fontSize: "15px", color: "#7777" }}>
-              [ {data.length} ]
-            </span>
+           Sports Outdoor Shoes {""}
+            <span className={styles.Productlenght}> [{data.length} ]</span>
           </h1>
         </div>
+
+          <MiniDrowp />
         <div className={styles.products}>
           {data &&
             data.map((item) => {
@@ -87,10 +90,10 @@ async function Product() {
                   isfevorite={isfvevorite}
                 />
               );
+              
             })}
         </div>
       </div>
-      <Footer/>
     </>
   );
 }

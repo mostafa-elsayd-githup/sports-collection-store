@@ -3,6 +3,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
+import styles from "./button.module.css"
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -10,39 +11,34 @@ export default function ThemeToggle() {
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
-  
-  // مكان محجوز شفاف عشان الصفحة متتحركش وقت التحميل
-  if (!mounted) return <div className="p-2 w-9 h-9" />; 
+  if (!mounted) return <div className="p-3 w-10 h-10" />; // مكان محجوز للزرار عشان الصفحة متتحركش
 
   return (
     <button
-    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      // شيلنا الـ border والـ bg والـ hover effect
-      className="relative flex items-center justify-center bg-transparent border-0 cursor-pointer"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className={styles.button}
       aria-label="Toggle Dark Mode"
     >
       <AnimatePresence mode="wait" initial={false}>
         {theme === "dark" ? (
           <motion.div
             key="sun"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
+            initial={{ y: 20, opacity: 0, rotate: 45 }}
+            animate={{ y: 0, opacity: 1, rotate: 0 }}
+            exit={{ y: -20, opacity: 0, rotate: -45 }}
             transition={{ duration: 0.2 }}
           >
-            {/* الشمس بلون الـ rating اللي حددناه */}
-            <Sun size={22} color="var(--rating-color)" strokeWidth={2} />
+            <Sun size={20} color="var(--rating-color)" strokeWidth={2.5} />
           </motion.div>
         ) : (
           <motion.div
             key="moon"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
+            initial={{ y: 20, opacity: 0, rotate: 45 }}
+            animate={{ y: 0, opacity: 1, rotate: 0 }}
+            exit={{ y: -20, opacity: 0, rotate: -45 }}
             transition={{ duration: 0.2 }}
           >
-            {/* القمر بلون النص الأساسي بتاعك */}
-            <Moon size={22} color="var(--color-primary)" strokeWidth={2} />
+            <Moon size={20} color="var(--color-primary)" strokeWidth={2.5} />
           </motion.div>
         )}
       </AnimatePresence>

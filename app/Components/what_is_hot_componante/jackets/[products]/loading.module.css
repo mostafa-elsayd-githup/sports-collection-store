@@ -12,7 +12,7 @@
 
 /* الأنميشن الأساسي للنبض */
 .skeleton {
-  background: #eee;
+  background: var(--color-main);
   background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
   border-radius: 8px;
   background-size: 200% 100%;

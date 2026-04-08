@@ -1,4 +1,3 @@
-// app/actions/cartActions.js
 "use server";
 import { revalidatePath } from "next/cache";
 
@@ -17,5 +16,5 @@ export async function addToCartAction(formData) {
     body: JSON.stringify(productData),
   });
 
-  revalidatePath("/", "layout"); // لتحديث عداد السلة في الهيدر
+  revalidatePath("/", "layout"); 
 }

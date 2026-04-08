@@ -44,27 +44,22 @@ background-position: inherit;
 }
 
 .Button {
-  color: var(--color-primary);
-  background-color: var(--bg-main);
+color: var(--color-primary);
+/* color: #000; */
+  /* background-color: #fff; */
+  background-color: var(--bg-primary);
   cursor: pointer;
-  padding: 5px 0;
-  width: 120px;
   text-align: center;
-  transition: all 0.3s;
-  bottom: -1px;
-  border-radius: 7px 7px 0 0 ;
+  border-radius: 3px;
+  width: 120px;
+  padding: 10px 0;
   position: absolute;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-}
-.Button:hover {
-  background-color: transparent;
-  color: var(--color-main);
+  font-size: 1.2rem;
   font-weight: 700;
-  font-size: 1.5rem;
-
 }
-/* media */
 @media (max-width: 768px) {
   .menCollection {
     flex-wrap: wrap;

@@ -13,7 +13,7 @@ function NavBar({ cartCount, washlistCount }) {
         
         {/* 1. اللوجو */}
         <Link href="/" className="navbar-brand">
-          <Image src="/logo.svg" alt="logo" width={60} height={40} className="dark:invert" />
+          <Image src="/logo.svg" alt="logo" width={80} height={40} className="dark:invert" />
         </Link>
 
         {/* زرار الموبايل */}

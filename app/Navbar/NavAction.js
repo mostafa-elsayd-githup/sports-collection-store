@@ -1,6 +1,6 @@
 "use server"
 import NavBar from "./navbar";
-
+import Error from "../error";
 export default async function NavAction() {
   try {
     const cartres = await fetch("http://localhost:1200/cart", {
@@ -20,7 +20,6 @@ export default async function NavAction() {
 
     return <NavBar cartCount={countcart} washlistCount={countwashlist} />;
   } catch (error) {
-    console.error("Connection Refused:", error.message);
-        return <NavBar cartCount={[]} washlistCount={[]} />;
+    throw new Error
   }
 }
