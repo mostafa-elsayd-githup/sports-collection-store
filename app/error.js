@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import style from "./error.module.css"; 
-
+import { Link } from "next/navigation";
 export default function Error({ error, reset }) {
   
   useEffect(() => {
@@ -30,12 +30,12 @@ export default function Error({ error, reset }) {
         >
           Reloade
         </button>
-        <button
-          onClick={() => reset()}
+        <Link
+        href="/"
           className={style.btn_home}
         >
           back to home
-        </button>
+        </Link>
       </div>
     </div>
   );

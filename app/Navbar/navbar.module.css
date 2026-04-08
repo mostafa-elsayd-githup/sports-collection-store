@@ -2,6 +2,7 @@
   background-color: var(--bg-primary) !important;
   border-bottom: 1px solid var(--border-color) !important;
   transition: all 0.3s ease;
+box-shadow: 14px 7px 20px -3px var(--color-primary);
 }
 
 .link {
