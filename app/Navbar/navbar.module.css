@@ -23,9 +23,7 @@ box-shadow: 14px 7px 20px -3px var(--color-primary);
 }
 .icon_mobile{
   background-color: #ffffffc2;
-  /* color: var() */
 }
-/*className="ms-auto [var(--color-primary)]" */
 .search_container {
   display: flex;
   align-items: center;

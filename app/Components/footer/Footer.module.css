@@ -111,7 +111,12 @@
   border-right: 1px solid #333;
   padding-right: 15px;
 }
+.SocialIcons{
+  /* display: flex; */
+  
+  /* flex-direction: row; */
 
+}
 /* استعلامات الوسائط (Responsiveness) */
 @media (max-width: 768px) {
   .newsletter_title {
@@ -127,7 +132,7 @@
   }
 
   .social_icons {
-    justify-content: center;
+    
     margin-top: 20px;
   }
   

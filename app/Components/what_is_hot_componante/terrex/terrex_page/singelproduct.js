@@ -45,14 +45,14 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         action={formAction}
       >
         {/*data for ActionFile*/}
-        <input type="hidden" name="id" value={productItem.id} />
-        <input type="hidden" name="image" value={productItem.image} />
+        <input type="hidden" name="id" value={productItem.id || ""} />
+        <input type="hidden" name="image" value={productItem.image || ""} />
         <input type="hidden" name="dis" value={productItem.dis} />
-        <input type="hidden" name="name" value={productItem.name} />
-        <input type="hidden" name="price" value={productItem.price} />
-        <input type="hidden" name="sizes" value={productItem.sizes[0]} />
-        <input type="hidden" name="category" value={productItem.category} />
-        <input type="hidden" name="actiontype" value={actionTypeState} />
+        <input type="hidden" name="name" value={productItem.name || ""} />
+        <input type="hidden" name="price" value={productItem.price || ""} />
+        <input type="hidden" name="sizes" value={productItem.sizes[0] || ""} />
+        <input type="hidden" name="category" value={productItem.category || ""} />
+        <input type="hidden" name="actiontype" value={actionTypeState || ""} />
         <button
           type="submit"
           disabled={pending}

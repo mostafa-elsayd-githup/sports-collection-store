@@ -60,7 +60,7 @@ function Footer() {
               <li>Contact Us</li>
             </ul>
           </Col>
-          <Col md={3} sm={6} className="mb-4  flex justify-between flex-row-reverse ">
+          <Col md={3} sm={6} className={styles.SocialIcons}>
             <h5 className={styles.column_title}>FOLLOW US</h5>
             <div className={styles.social_icons}>
               <FontAwesomeIcon icon={faFacebookF} className={styles.social_icon} />

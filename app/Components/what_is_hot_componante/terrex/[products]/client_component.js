@@ -200,6 +200,7 @@ export default function Products({ fillWidth, product, isfevorite }) {
             </div>
 
             <span className={styles.ratingText}>
+             [ {product.rating} ]
               <span className={styles.reviewsCount}>
                 ({product.watchde || 0} reviews)
               </span>

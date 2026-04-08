@@ -4,27 +4,29 @@ import { Card } from "react-bootstrap";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart as farHeart, faEye} from "@fortawesome/free-regular-svg-icons"; 
-import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons"; 
+  faHeart as farHeart,
+  faEye,
+} from "@fortawesome/free-regular-svg-icons";
+import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import handleAction from "./ActionFile";
 import { useOpneing } from "../../../../RTK/storcontext";
-import { redirect,useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const SingleProduct = ({ productItem, isfevorite }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
   const [state, formAction, pending] = useActionState(
     handleAction,
     initialState,
   );
-  useEffect(()=>{
-    if(state?.state === 401){
-      redirect("/register")
+  useEffect(() => {
+    if (state?.state === 401) {
+      redirect("/register");
     }
-  }, [state , router])
+  }, [state, router]);
   const [actionTypeState, setActionTypeState] = useState("");
   const { setIsOpen, setSelectedProduct } = useOpneing();
   return (
@@ -45,14 +47,18 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         action={formAction}
       >
         {/*data for ActionFile*/}
-        <input type="hidden" name="id" value={productItem.id} />
-        <input type="hidden" name="image" value={productItem.image} />
-        <input type="hidden" name="dis" value={productItem.dis} />
-        <input type="hidden" name="name" value={productItem.name} />
-        <input type="hidden" name="price" value={productItem.price} />
-        <input type="hidden" name="sizes" value={productItem.sizes[0]} />
-        <input type="hidden" name="category" value={productItem.category} />
-        <input type="hidden" name="actiontype" value={actionTypeState} />
+        <input type="hidden" name="id" value={productItem.id || ""} />
+        <input type="hidden" name="image" value={productItem.image || ""} />
+        <input type="hidden" name="dis" value={productItem.dis || ""} />
+        <input type="hidden" name="name" value={productItem.name || ""} />
+        <input type="hidden" name="price" value={productItem.price || ""} />
+        <input type="hidden" name="sizes" value={productItem.sizes[0] || ""} />
+        <input
+          type="hidden"
+          name="category"
+          value={productItem.category || ""}
+        />
+        <input type="hidden" name="actiontype" value={actionTypeState || ""} />
         <button
           type="submit"
           disabled={pending}
@@ -115,9 +121,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
             variant="top"
             src={currentImg}
             alt={productItem.description}
-    
             onMouseEnter={() => setCurrentImg(productItem.image_Hover)}
-     
             className={styles.image}
           />
         </Link>

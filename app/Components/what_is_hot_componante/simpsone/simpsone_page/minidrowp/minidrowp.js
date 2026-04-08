@@ -9,10 +9,11 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import handelAction from "./miniaction";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
-import { redirect, useRouter } from "next/navigation";
-
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Swal from "sweetalert2";
 export default function MiniDrowp({ isfevorite }) {
-  const Router = useRouter()
+  const Router = useRouter();
   const { isOpen, setIsOpen, selectedProduct } = useOpneing();
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
@@ -22,11 +23,21 @@ export default function MiniDrowp({ isfevorite }) {
   const [actionTypeState, setActionTypeState] = useState("");
   const [selectedSize, setselectedSize] = useState("");
   const [AddToCart, setAddToCart] = useState(false);
-useEffect(()=>{
-  if(state?.state === 401){
-    redirect("/register")
-  }
-},[state , Router])
+  useEffect(() => {
+    if (state?.state === 401) {
+      Swal.fire({
+        title: "Login Required",
+        text: "Please log in to continue. Redirecting...",
+        icon: "error",
+        timer: 2500, 
+        timerProgressBar: true, 
+        showConfirmButton: false,
+        willClose: () => { // <=callback function
+          Router.replace("/register");
+        },
+      });
+    }
+  }, [state, Router]);
   return (
     <div className={`${styles.overlay} ${isOpen ? styles.activeOverlay : ""}`}>
       {pending && (
@@ -34,6 +45,7 @@ useEffect(()=>{
           <div className={styles.halfCircleLoader}></div>
         </div>
       )}
+
       {selectedProduct ? (
         <div key={selectedProduct.id} className={styles.container}>
           <div
@@ -88,7 +100,7 @@ useEffect(()=>{
             </div>
           </div>
 
-          {/* product*/}
+          {/* product info*/}
           <div className={styles.infoSection}>
             <div className={styles.headerInfo}>
               <h1 className={styles.productName}>{selectedProduct.name}</h1>
@@ -149,6 +161,16 @@ useEffect(()=>{
 
             {/* actions */}
             <div className={styles.actions}>
+              {/* view product button */}
+              <Link
+                className={styles.View_ProductBtn}
+                href={`/Components/what_is_hot_componante/terrex/${selectedProduct.id}`}
+              >
+                View Product
+                <span className={styles.arrowIcon}>
+                  <FontAwesomeIcon icon={faRightLong} />
+                </span>
+              </Link>
               <form
                 className={styles.icons}
                 onClick={(e) => e.stopPropagation()}
