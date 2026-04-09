@@ -12,10 +12,10 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import handleAction from "./ActionFile";
 import { useOpneing } from "../../../../RTK/storcontext";
-import { redirect, useRouter } from "next/navigation";
-
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 const SingleProduct = ({ productItem, isfevorite }) => {
-  const router = useRouter();
+  const Router = useRouter();
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
   const [state, formAction, pending] = useActionState(
@@ -24,9 +24,19 @@ const SingleProduct = ({ productItem, isfevorite }) => {
   );
   useEffect(() => {
     if (state?.state === 401) {
-      redirect("/register");
+      Swal.fire({
+        title: "Login Required",
+        text: "Please log in to continue. Redirecting...",
+        icon: "error",
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        willClose: () => { // <=callback function
+          Router.replace("/register");
+        },
+      });
     }
-  }, [state, router]);
+  });
   const [actionTypeState, setActionTypeState] = useState("");
   const { setIsOpen, setSelectedProduct } = useOpneing();
   return (

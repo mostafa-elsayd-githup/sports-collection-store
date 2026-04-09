@@ -1,15 +1,29 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
-import styles from "./page.module.css";
+"use server";
+import { cache } from "react";
 import NavAction from "../../../../Navbar/NavAction";
 import Footer from "../../../footer/Footre";
-import Image from "next/image";
+import Products from "./client_component";
+import styles from "./page.module.css";
+
+async function getWishlist() {
+  try {
+    const res = await fetch(`http://localhost:1200/wishlist`, {
+      cache: "no-store", 
+      next: { tags: ["wishlist"] },
+    });
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
 async function getProduct(id) {
   try {
     const res = await fetch(
       `http://localhost:1200/your_sport_start_hear_gym/${id}`,
       {
-        next: { revalidate: 600 },
+        next: { revalidate: 60 }
       },
     );
     if (!res.ok) return undefined;
@@ -23,97 +37,16 @@ async function getProduct(id) {
 export default async function ProductPage({ params }) {
   const resolvedParams = await params;
   const productId = resolvedParams.products;
-  const product = await getProduct(productId);
-
-  if (!product) notFound();
+  const products = await getProduct(productId);
+  const wishlist = await getWishlist()
+  if (!products) notFound();
+  const fillWidths = (products.rating / 5) * 100;
+ var isfevorites = null
   return (
     <div className={styles.wrapper}>
       <NavAction />
-      <div className={styles.container}>
-        {/* الجزء الأيسر: معرض الصور */}
-        <div className={styles.imageGallery}>
-          <div className={styles.imageContainer}>
-            <img
-              src={product.image}
-              alt={product.description}
-              className={styles.mainImage}
-            />
-          </div>
-          <div className={styles.imageContainer}>
-            <img
-              src={product.image_Hover}
-              alt={product.description}
-              className={styles.mainImage}
-            />
-          </div>
-        </div>
-
-        {/* الجزء الأيمن: تفاصيل المنتج */}
-        <div className={styles.infoSection}>
-          <div className={styles.headerInfo}>
-            <span className={styles.category}>{product.category}</span>
-            <h1 className={styles.productName}>{product.name}</h1>
-            {product.oldPrice ? (
-              <span>
-                <span className={styles.price}>EGP {product.price}</span>
-                <span className={styles.oldPrice}>EGP {product.oldPrice}</span>
-              </span>
-            ) : (
-              <p className={styles.price}>EGP {product.price}</p>
-            )}
-            <div className={styles.colors_available}>
-              {product.url.length} colours available{" "}
-            </div>
-            <div className={styles.smil_image}>
-              {product.url.map((item) => {
-                return (
-                  <span key={item.id}>
-                    <Image
-                      src={item.img_url}
-                      alt="Logo"
-                      width={70}
-                      height={70}
-                    />
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* اختيار المقاسات - Static Grid */}
-          <div className={styles.sizeSection}>
-            <h3 className={styles.sectionTitle}>Select Size</h3>
-            <div className={styles.sizeGrid}>
-              {product.sizes.map((size) => (
-                <button key={size} className={styles.sizeBox}>
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* أزرار الأكشن */}
-          <div className={styles.actions}>
-            <button className={styles.addToCartBtn}>
-              ADD TO BAG
-              <span className={styles.arrowIcon}>→</span>
-            </button>
-            <button className={styles.wishlistBtn}>
-              <FontAwesomeIcon
-                className={styles.icon}
-                icon={farHeart}
-                // icon={isInWishlist ? fasHeart : farHeart}
-                // onClick={() => Dispatch(addToWishlist(productItem))}
-              />
-            </button>
-          </div>
-
-          {/* الوصف */}
-          <div className={styles.description}>
-            <h3 className={styles.sectionTitle}>{product.description}</h3>
-          </div>
-        </div>
-      </div>
+      {isfevorites =!!wishlist.some((wish)=> wish.id === products.id )}
+      <Products fillWidth={fillWidths} product={products} isfevorite={isfevorites} />
       <Footer />
     </div>
   );

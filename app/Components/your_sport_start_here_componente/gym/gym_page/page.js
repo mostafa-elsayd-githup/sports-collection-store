@@ -4,6 +4,7 @@ import SingleProduct from "./singelproduct";
 import { Container } from "react-bootstrap";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
+import MiniDrowp from "./minidrowp/minidrowp";
 
 async function getWishlist() {
   try {
@@ -87,6 +88,7 @@ async function Product() {
             keep you from your next session. <button></button>
           </p>
         </div>
+        <MiniDrowp/>
         <div className={styles.products}>
           {data &&
             data.map((item) => {

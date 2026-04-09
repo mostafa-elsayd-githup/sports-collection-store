@@ -13,33 +13,34 @@
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: 15px;
-  font-style: italic; /* ستايل رياضي */
+  font-style: italic; 
 }
 
 .errorButtons {
   display: flex;
   gap: 15px;
   margin-top: 25px;
+
 }
 
 .retryBtn, .homeBtn {
   padding: 12px 30px;
   font-weight: bold;
   text-transform: uppercase;
-  border: 1px solid #000;
+  border: 1px solid var(--color-primary);
   cursor: pointer;
   transition: 0.3s;
   text-decoration: none;
 }
 
 .retryBtn {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-main);
 }
 
 .homeBtn {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
 }
 
 .retryBtn:hover, .homeBtn:hover {
