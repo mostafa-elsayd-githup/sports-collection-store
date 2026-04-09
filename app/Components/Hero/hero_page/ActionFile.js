@@ -1,5 +1,6 @@
 "use server";
 import { revalidateTag } from "next/cache";
+import { cookies } from "next/headers";
 
 export default async function handleAction(prevstate, formData) {
   const actionType = formData.get("actiontype");
@@ -20,35 +21,17 @@ export default async function handleAction(prevstate, formData) {
     sizes,
     quantity: 1,
   };
-
-  if (actionType === "cart") {
-    try {
-      const checkcart = await fetch(`http://localhost:1200/cart/${product.id}`);
-      if (checkcart.ok) {
-        const existingProduct = await checkcart.json();
-        const updated = Number(existingProduct.quantity || 1) + 1;
-        await fetch(`http://localhost:1200/cart/${product.id}`, {
-          method: "PATCH",
-          body: JSON.stringify({ quantity: updated }),
-          headers: { "content-type": "application/json" },
-        });
-      } else {
-        await fetch("http://localhost:1200/cart", {
-          method: "POST",
-          body: JSON.stringify({ ...product, quantity: 1 }),
-          headers: { "content-type": "application/json" },
-        });
-      }
-
-      revalidateTag("cart");
-    } catch (error) {
-      // في حال تعذر الاتصال بالسيرفر أصلاً
-      return { message: "عذراً، فشل الاتصال بالسيرفر", status: 500 };
-    }
-  } else if (actionType === "wishlist") {
+ if (actionType === "wishlist") {
+  console.log(actionType)
+  const tokenstor = await cookies()
+  const token = tokenstor.get("token")?.value
+  if(!token){
+    return{state:401 , message:"Please login to continue"}
+  }
     try {
       const wishlist = await fetch(
-        `http://localhost:1200/wishlist/${product.id}`);
+        `http://localhost:1200/wishlist/${product.id}`,
+      );
       if (wishlist.ok) {
         await fetch(`http://localhost:1200/wishlist/${product.id}`, {
           method: "DELETE",
@@ -56,7 +39,7 @@ export default async function handleAction(prevstate, formData) {
 
         revalidateTag("wishlist");
       } else {
-        const add = await fetch("http://localhost:1200/wishlist", {
+        await fetch("http://localhost:1200/wishlist", {
           method: "POST",
           body: JSON.stringify(product),
           headers: { "content-type": "application/json" },
@@ -64,8 +47,32 @@ export default async function handleAction(prevstate, formData) {
         revalidateTag("wishlist");
       }
     } catch {
-      // في حال تعذر الاتصال بالسيرفر أصلاً
       return { message: "عذراً، فشل الاتصال بالسيرفر", status: 500 };
     }
+  } else if (actionType === "eye") {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
+
+    try {
+      const res = await fetch(
+        `http://localhost:1200/products/${product.id}`,
+      );
+      const currentProduct = await res.json();
+      const chickTocen = currentProduct.watchedTokens?.includes(token);
+
+      if (chickTocen) return;
+      const updataToken = [...(currentProduct.watchedTokens || []), token];
+      await fetch(
+        `http://localhost:1200/products/${product.id}`,
+        {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            watchde: (currentProduct.watchde || 0) + 1,
+            watchedTokens: updataToken,
+          }),
+        },
+      );
+    } catch {}
   }
 }

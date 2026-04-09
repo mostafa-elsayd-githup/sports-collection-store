@@ -2,8 +2,8 @@ import NotFoundComponent from "../../Hero/NotFoundComponent";
 import Link from "next/link";
 import styles from "./sportproducts.module.css";
 import SingleProduct from "./SingleProduct";
-import { Container } from "react-bootstrap";
 import NavAction from "../../../Navbar/NavAction";
+import MiniDrowp from "./minidrowp/minidrowp";
 
 async function getwishlist() {
   try {
@@ -73,6 +73,7 @@ async function Product({ searchParams }) {
             </span>
           </h1>
         </div>
+        <MiniDrowp/>
         <div className={styles.products}>
           {data.map((item) => {
             const isfevorite = wishlistdata.some((wish) => wish.id === item.id);
