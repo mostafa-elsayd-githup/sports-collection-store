@@ -1,7 +1,7 @@
+"use server"
 import Link from "next/link";
 import styles from "./page.module.css";
 import SingleProduct from "./singelproduct";
-import { Container } from "react-bootstrap";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
 import MiniDrowp from "./minidrowp/minidrowp";
@@ -78,7 +78,7 @@ async function Product() {
         <div className={styles.products}>
           {data &&
             data.map((item) => {
-              const isfvevorite = wishlist.some(
+              const isfvevorite = !!wishlist.some(
                 (wishlist) => wishlist.id === item.id,
               );
               return (

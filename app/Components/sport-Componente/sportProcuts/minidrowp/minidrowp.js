@@ -6,7 +6,7 @@ import Image from "next/image";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import handelAction from "./miniaction";
+import handelAction, { CheckCookes } from "./miniaction";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
@@ -29,10 +29,11 @@ export default function MiniDrowp({ isfevorite }) {
         title: "Login Required",
         text: "Please log in to continue. Redirecting...",
         icon: "error",
-        timer: 2500, 
-        timerProgressBar: true, 
+        timer: 2500,
+        timerProgressBar: true,
         showConfirmButton: false,
-        willClose: () => { // <=callback function
+        willClose: () => {
+          // <=callback function
           Router.replace("/register");
         },
       });
@@ -164,7 +165,27 @@ export default function MiniDrowp({ isfevorite }) {
               {/* view product button */}
               <Link
                 className={styles.View_ProductBtn}
-                href={`/Components/sport-Componente/${selectedProduct.id}`}
+                href={""}
+                onClick={async (e) => {
+                  e.preventDefault;
+                  const result = await CheckCookes();
+                  if (result.success) {
+                    Router.push(`/Components/sport-Componente/${selectedProduct.id}`)
+                  } else {
+                    Swal.fire({
+                      title: "Login Required",
+                      text: "Please log in to continue. Redirecting...",
+                      icon: "error",
+                      timer: 3000,
+                      timerProgressBar: true,
+                      showConfirmButton: false,
+                      willClose: () => {
+                        // <=callback function
+                        Router.replace("/register");
+                      },
+                    });
+                  }
+                }}
               >
                 View Product
                 <span className={styles.arrowIcon}>
@@ -177,14 +198,26 @@ export default function MiniDrowp({ isfevorite }) {
                 action={formAction}
               >
                 {/*data for ActionFile*/}
-                <input type="hidden" name="id" value={selectedProduct.id || ""} />
+                <input
+                  type="hidden"
+                  name="id"
+                  value={selectedProduct.id || ""}
+                />
                 <input
                   type="hidden"
                   name="image"
                   value={selectedProduct.image || ""}
                 />
-                <input type="hidden" name="dis" value={selectedProduct.dis || ""} />
-                <input type="hidden" name="name" value={selectedProduct.name || ""} />
+                <input
+                  type="hidden"
+                  name="dis"
+                  value={selectedProduct.dis || ""}
+                />
+                <input
+                  type="hidden"
+                  name="name"
+                  value={selectedProduct.name || ""}
+                />
                 <input
                   type="hidden"
                   name="price"
@@ -202,7 +235,7 @@ export default function MiniDrowp({ isfevorite }) {
                   value={actionTypeState || ""}
                 />
                 <button
-                  className={styles.addToCartBtn} 
+                  className={styles.addToCartBtn}
                   type="submit"
                   onMouseDown={() => setActionTypeState("card")}
                 >

@@ -118,7 +118,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
 
       <div style={{ position: "relative" }}>
         <Link
-          href={`/Components/your_sport_start_here_componente/basket_ball/${productItem.id}`}
+          href={`/Components/Hero/${productItem.id}`}
         >
           <Card.Img
             name="image"
@@ -140,7 +140,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           {productItem.url.map((style) => (
             <div key={style.id} className={styles.small_img}>
               <Link
-                href={`/Components/your_sport_start_here_componente/basket_ball/${style.id}`}
+                href={`/Components/Hero/${style.id}`}
               >
                 <Card.Img
                   variant="top"
@@ -163,7 +163,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           </span>
         ) : null}
         <Link
-          href={`/app/Components/Hero/${productItem.id}`}
+          href={`/Components/Hero/${productItem.id}`}
         >
           <h5 className={styles.name}>{productItem.name}</h5>
         </Link>
@@ -182,7 +182,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
             <input
               type="hidden"
               name="old_price"
-              value={productItem.oldPrice}
+              value={productItem.oldPrice || ""}
             />
           </>
         )}

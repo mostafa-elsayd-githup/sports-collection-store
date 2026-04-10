@@ -6,7 +6,7 @@ import Image from "next/image";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import handelAction from "./miniaction";
+import handelAction, {CheckCookies} from "./miniaction";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
@@ -29,10 +29,11 @@ export default function MiniDrowp({ isfevorite }) {
         title: "Login Required",
         text: "Please log in to continue. Redirecting...",
         icon: "error",
-        timer: 2500, 
-        timerProgressBar: true, 
+        timer: 2500,
+        timerProgressBar: true,
         showConfirmButton: false,
-        willClose: () => { // <=callback function
+        willClose: () => {
+          // <=callback function
           Router.replace("/register");
         },
       });
@@ -119,20 +120,6 @@ export default function MiniDrowp({ isfevorite }) {
               <div className={styles.colors_available}>
                 {selectedProduct.url.length} colours available
               </div>
-              <div className={styles.smil_image}>
-                {selectedProduct.url.map((item) => {
-                  return (
-                    <span key={item.id}>
-                      <Image
-                        src={item.img_url}
-                        alt="Logo"
-                        width={70}
-                        height={70}
-                      />
-                    </span>
-                  );
-                })}
-              </div>
             </div>
 
             {/* sizes*/}
@@ -164,7 +151,29 @@ export default function MiniDrowp({ isfevorite }) {
               {/* view product button */}
               <Link
                 className={styles.View_ProductBtn}
-                href={`/Components/your_sport_start_here_componente/tennis/${selectedProduct.id}`}
+                href={""}
+                onClick={async (e) => {
+                  e.preventDefault;
+                  const ruselt = await CheckCookies();
+                  if (ruselt.success) {
+                    Router.push(
+                      `/Components/what_is_hot_componante/terrex/${selectedProduct.id}`,
+                    );
+                  } else {
+                    Swal.fire({
+                      title: "Login Required",
+                      text: "Please log in to continue. Redirecting...",
+                      icon: "error",
+                      timer: 3000,
+                      timerProgressBar: true,
+                      showConfirmButton: false,
+                      willClose: () => {
+                        // <= callback function
+                        Router.replace("/register");
+                      },
+                    });
+                  }
+                }}
               >
                 View Product
                 <span className={styles.arrowIcon}>

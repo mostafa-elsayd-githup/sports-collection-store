@@ -81,3 +81,11 @@ export default async function handelAction(prevstate, formData) {
     }
   }
 }
+export async function CheckCookes(){
+  const cookiesstore = await cookies()
+  const token = cookiesstore.get("token")
+  if(!token){
+    return{success: false , message:"login and try agien "}
+  }
+  return{success:true}
+}

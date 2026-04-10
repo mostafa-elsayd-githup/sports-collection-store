@@ -1,3 +1,4 @@
+"use server"
 import Link from "next/link";
 import styles from "./page.module.css";
 import SingleProduct from "./singelproduct";
@@ -18,10 +19,10 @@ async function getWishlist() {
   }
 }
 
-async function gitdata(categoryKey) {
+async function gitdata() {
   try {
     const res = await fetch(
-      `http://localhost:1200/products?club=${categoryKey}`,
+      `http://localhost:1200/your_sport_start_hear_running`,
       { next: { revalidate: 60 } },
     );
     if (!res.ok) {
@@ -35,10 +36,8 @@ async function gitdata(categoryKey) {
   }
 }
 
-async function Product({ searchParams }) {
-  const query = await searchParams;
-  const categoryKey = query.club;
-  const data = await gitdata(categoryKey);
+async function Product() {
+  const data = await gitdata();
   const wishlist = await getWishlist();
 
   if (!data || data.length === 0) {
@@ -79,14 +78,13 @@ async function Product({ searchParams }) {
         <div className={styles.products}>
           {data &&
             data.map((item) => {
-              const isfvevorite = wishlist.some(
-                (wishlist) => wishlist.id === item.id,
-              );
+               const isfevorite = wishlist.some((wish) => wish.id === item.id);
+              
               return (
                 <SingleProduct
                   key={item.id}
                   productItem={item}
-                  isfevorite={isfvevorite}
+                  isfevorite={isfevorite}
                 />
               );
             })}

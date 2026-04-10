@@ -112,7 +112,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/56428eaf346b4a4aa86927927eb5968c_9366/JV6487_23_hover_model.jpg",
       "url": [],
       "rating": 4.8,
-      "description": "حذاء تدريب بثبات عالي"
+      "description": "حذاء تدريب بثبات عالي",
+      "watchde": 1,
+      "watchedTokens": [
+        null
+      ]
     },
     {
       "id": "5",

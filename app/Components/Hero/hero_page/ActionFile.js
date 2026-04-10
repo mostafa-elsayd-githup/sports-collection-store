@@ -22,7 +22,6 @@ export default async function handleAction(prevstate, formData) {
     quantity: 1,
   };
  if (actionType === "wishlist") {
-  console.log(actionType)
   const tokenstor = await cookies()
   const token = tokenstor.get("token")?.value
   if(!token){
@@ -55,7 +54,7 @@ export default async function handleAction(prevstate, formData) {
 
     try {
       const res = await fetch(
-        `http://localhost:1200/products/${product.id}`,
+        `http://localhost:1200/your_sport_start_hear_running/${product.id}`,
       );
       const currentProduct = await res.json();
       const chickTocen = currentProduct.watchedTokens?.includes(token);
@@ -63,7 +62,7 @@ export default async function handleAction(prevstate, formData) {
       if (chickTocen) return;
       const updataToken = [...(currentProduct.watchedTokens || []), token];
       await fetch(
-        `http://localhost:1200/products/${product.id}`,
+        `http://localhost:1200/your_sport_start_hear_running/${product.id}`,
         {
           method: "PATCH",
           headers: { "content-type": "application/json" },

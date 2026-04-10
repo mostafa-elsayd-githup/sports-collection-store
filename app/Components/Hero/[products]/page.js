@@ -3,6 +3,7 @@ import NavAction from "../../../Navbar/NavAction";
 import Footer from "../../footer/Footre";
 import Products from "./client_component";
 import styles from "./page.module.css";
+import NotFound from "./not-found";
 
 async function getWishlist() {
   try {
@@ -38,7 +39,7 @@ export default async function ProductPage({ params }) {
   const productId = resolvedParams.products;
   const products = await getProduct(productId);
   const wishlist = await getWishlist()
-  if (!products) notFound();
+  if (!products) NotFound();
   const fillWidths = (products.rating / 5) * 100;
  var isfevorites = null
   return (

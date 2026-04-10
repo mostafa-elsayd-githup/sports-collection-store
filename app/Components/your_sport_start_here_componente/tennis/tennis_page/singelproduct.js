@@ -182,7 +182,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
             <input
               type="hidden"
               name="old_price"
-              value={productItem.oldPrice}
+              value={productItem.oldPrice|| ""}
             />
           </>
         )}

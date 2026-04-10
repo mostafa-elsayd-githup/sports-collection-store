@@ -2,13 +2,13 @@
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 export default async function handelAction(prevstate, formData) {
-  // chicking for if he have token or no 
+  // chicking for if he have token or no
   const tokenstor = await cookies();
-  const token = tokenstor.get("token")?.value
-  if(!token){
- return{state:401 , message:"Please login to continue"}
-}
-// 
+  const token = tokenstor.get("token")?.value;
+  if (!token) {
+    return { state: 401, message: "Please login to continue" };
+  }
+  //
   const actionType = formData.get("actiontype");
   const id = formData.get("id");
   const image = formData.get("image");
@@ -29,8 +29,8 @@ export default async function handelAction(prevstate, formData) {
   };
   if (actionType === "card") {
     const cartitemId = `${product.id}-${sizes}`;
-    if(!sizes || sizes.trim() === ""){
-      return{message:"Select size first"}
+    if (!sizes || sizes.trim() === "") {
+      return { message: "Select size first" };
     }
     try {
       const checkcart = await fetch(`http://localhost:1200/cart/${cartitemId}`);
@@ -80,4 +80,12 @@ export default async function handelAction(prevstate, formData) {
       return { message: "عذراً، فشل الاتصال بالسيرفر", status: 500 };
     }
   }
+}
+export async function CheckCookies() {
+  const CookiesStore = await cookies();
+  const token = CookiesStore.get("token");
+  if (!token) {
+    return { success: false, message: "login and try agien" };
+  }
+  return { success: true };
 }

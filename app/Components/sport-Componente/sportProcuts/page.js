@@ -1,3 +1,4 @@
+"use server"
 import NotFoundComponent from "../../Hero/NotFoundComponent";
 import Link from "next/link";
 import styles from "./sportproducts.module.css";
@@ -17,7 +18,6 @@ async function getwishlist() {
   }
 }
 
-// 2. تعديل دالة getdata لتجلب البيانات مباشرة من MongoDB
 async function getdata(category) {
   try {
     const res = await fetch(`http://localhost:1200/products?type=${category}`, {
@@ -75,7 +75,7 @@ async function Product({ searchParams }) {
         </div>
         <MiniDrowp/>
         <div className={styles.products}>
-          {data.map((item) => {
+          {data && data.map((item) => {
             const isfevorite = wishlistdata.some((wish) => wish.id === item.id);
             return (
               <SingleProduct
