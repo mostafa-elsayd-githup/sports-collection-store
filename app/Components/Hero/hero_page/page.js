@@ -1,15 +1,16 @@
-"use server"
+"use server";
 import Link from "next/link";
 import styles from "./page.module.css";
 import SingleProduct from "./singelproduct";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../Navbar/NavAction";
 import MiniDrowp from "./minidrowp/minidrowp";
+import Footer from "../../../footer/Footre";
 
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
-      cache: "no-store", 
+      cache: "no-store",
       next: { tags: ["wishlist"] },
     });
     if (!res.ok) return [];
@@ -74,12 +75,12 @@ async function Product() {
             </span>
           </h1>
         </div>
-        <MiniDrowp/>
+        <MiniDrowp />
         <div className={styles.products}>
           {data &&
             data.map((item) => {
-               const isfevorite = wishlist.some((wish) => wish.id === item.id);
-              
+              const isfevorite = wishlist.some((wish) => wish.id === item.id);
+
               return (
                 <SingleProduct
                   key={item.id}
@@ -90,6 +91,7 @@ async function Product() {
             })}
         </div>
       </div>
+        <Footer />
     </>
   );
 }

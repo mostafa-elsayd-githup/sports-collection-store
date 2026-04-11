@@ -18,7 +18,7 @@ export default async function NavAction() {
     const countcart = await cartres.json();
     const countwashlist = await washlistres.json();
 
-    return <NavBar cartCount={countcart} washlistCount={countwashlist} />;
+    return <NavBar cartCount={countcart} wishlistCount={countwashlist} />;
   } catch (error) {
     throw new Error
   }

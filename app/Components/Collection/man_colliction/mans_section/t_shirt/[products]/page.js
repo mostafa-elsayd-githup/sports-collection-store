@@ -5,7 +5,7 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import NotFound from "./not_found";
 import styles from "./page.module.css";
 import NavAction from "../../../../../../Navbar/NavAction";
-import Footer from "../../../../../footer/Footre";
+import Footer from "../../../../../../footer/Footre";
 import Image from "next/image";
 import { Card } from "react-bootstrap";
 // هذه الدالة تجلب المنتج بناءً على الـ ID من الـ API بتاعك

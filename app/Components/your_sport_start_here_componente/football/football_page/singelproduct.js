@@ -4,41 +4,43 @@ import { Card } from "react-bootstrap";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart as farHeart, faEye} from "@fortawesome/free-regular-svg-icons"; 
-import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons"; 
+  faHeart as farHeart,
+  faEye,
+} from "@fortawesome/free-regular-svg-icons";
+import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import handleAction from "./ActionFile";
 import { useOpneing } from "../../../../RTK/storcontext";
-import {useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-
 const SingleProduct = ({ productItem, isfevorite }) => {
-  const Router = useRouter()
+  const Router = useRouter();
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
   const [state, formAction, pending] = useActionState(
     handleAction,
     initialState,
   );
-  useEffect(()=>{
-    if(state?.state === 401){
-     Swal.fire({
-         title: "Login Required",
-         text: "Please log in to continue. Redirecting...",
-         icon: "error",
-         timer: 3000, 
-         timerProgressBar: true, 
-         showConfirmButton: false,
-         willClose: () => { // <=callback function
-           Router.replace("/register");
-         },
-       });
+  useEffect(() => {
+    if (state?.state === 401) {
+      Swal.fire({
+        title: "Login Required",
+        text: "Please log in to continue. Redirecting...",
+        icon: "error",
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        willClose: () => {
+          // <=callback function
+          Router.replace("/register");
+        },
+      });
     }
-  })
+  });
   const [actionTypeState, setActionTypeState] = useState("");
-  const { setIsOpen, setSelectedProduct } = useOpneing();
+  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -63,12 +65,19 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         <input type="hidden" name="name" value={productItem.name || ""} />
         <input type="hidden" name="price" value={productItem.price || ""} />
         <input type="hidden" name="sizes" value={productItem.sizes[0] || ""} />
-        <input type="hidden" name="category" value={productItem.category || ""} />
+        <input
+          type="hidden"
+          name="category"
+          value={productItem.category || ""}
+        />
         <input type="hidden" name="actiontype" value={actionTypeState || ""} />
         <button
           type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("wishlist")}
+          onMouseDown={() => {
+            setActionTypeState("wishlist");
+            setisfevorite(!isfevorite);
+          }}
           style={{
             background: "none",
             border: "none",
@@ -127,9 +136,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
             variant="top"
             src={currentImg}
             alt={productItem.description}
-    
             onMouseEnter={() => setCurrentImg(productItem.image_Hover)}
-     
             className={styles.image}
           />
         </Link>
@@ -184,7 +191,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
             <input
               type="hidden"
               name="old_price"
-              value={productItem.oldPrice || ""}
+              value={productItem.oldPrice}
             />
           </>
         )}

@@ -5,6 +5,7 @@ import SingleProduct from "./singelproduct";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
 import MiniDrowp from "./minidrowp/minidrowp";
+import Footer from "../../../../footer/Footre";
 
 async function getWishlist() {
   try {
@@ -80,7 +81,7 @@ async function Product() {
         <div className={styles.products}>
           {data &&
             data.map((item) => {
-              const isfvevorite = wishlist.some(
+              const isfvevorite = !!wishlist.some(
                 (wishlist) => wishlist.id === item.id,
               );
               return (
@@ -94,6 +95,7 @@ async function Product() {
             })}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

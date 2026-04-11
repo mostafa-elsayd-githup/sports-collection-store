@@ -18,6 +18,7 @@ import { useActionState, useEffect } from "react";
 import handelAction from "./ActionFile";
 import { useState } from "react";
 import { useRouter, redirect } from "next/navigation";
+import { useOpneing } from "../../../../RTK/storcontext";
 export default function Products({ fillWidth, product, isfevorite }) {
   const Router = useRouter();
   const initialState = { massage: "", stat: null };
@@ -25,6 +26,8 @@ export default function Products({ fillWidth, product, isfevorite }) {
     handelAction,
     initialState,
   );
+  const { setisfevorite } = useOpneing();
+
   const [actionTypeState, setActionTypeState] = useState("");
   const [selectedSize, setselectedSize] = useState("");
   const [AddToCart, setAddToCart] = useState(false);
@@ -174,7 +177,10 @@ export default function Products({ fillWidth, product, isfevorite }) {
               <button
                 className={styles.wishlistBtn}
                 type="submit"
-                onMouseDown={() => setActionTypeState("wishlist")}
+                onMouseDown={() => {
+                  setActionTypeState("wishlist");
+                  setisfevorite(!isfevorite);
+                }}
               >
                 <FontAwesomeIcon
                   className={styles.icon}
@@ -200,7 +206,7 @@ export default function Products({ fillWidth, product, isfevorite }) {
             </div>
 
             <span className={styles.ratingText}>
-             [ {product.rating} ]
+              [ {product.rating} ]
               <span className={styles.reviewsCount}>
                 ({product.watchde || 0} reviews)
               </span>

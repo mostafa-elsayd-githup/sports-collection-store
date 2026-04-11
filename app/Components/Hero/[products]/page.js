@@ -1,6 +1,6 @@
 "use server";
 import NavAction from "../../../Navbar/NavAction";
-import Footer from "../../footer/Footre";
+import Footer from "../../../footer/Footre";
 import Products from "./client_component";
 import styles from "./page.module.css";
 import NotFound from "./not-found";
@@ -21,12 +21,12 @@ async function getWishlist() {
 async function getProduct(id) {
   try {
     const res = await fetch(
-      `http://localhost:1200/products/${id}`,
+      `http://localhost:1200/your_sport_start_hear_running/${id}`,
       {
         next: { revalidate: 60 }
       },
     );
-    if (!res.ok) return undefined;
+    if (!res.ok) return notd;
     const data = await res.json();
     return data;
   } catch {

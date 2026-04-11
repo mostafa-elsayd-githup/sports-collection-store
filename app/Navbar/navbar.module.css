@@ -2,7 +2,7 @@
   background-color: var(--bg-primary) !important;
   border-bottom: 1px solid var(--border-color) !important;
   transition: all 0.3s ease;
-box-shadow: 14px 7px 20px -3px var(--color-primary);
+  box-shadow:14px 2px 12px -3px var(--color-primary);
 }
 
 .link {
@@ -14,14 +14,14 @@ box-shadow: 14px 7px 20px -3px var(--color-primary);
   text-transform: uppercase;
   padding: 10px 15px !important;
   transition: all 0.2s ease;
-  display: block; 
+  display: block;
 }
 
 .link:hover {
   background-color: var(--color-primary);
   color: var(--bg-primary) !important;
 }
-.icon_mobile{
+.icon_mobile {
   background-color: #ffffffc2;
 }
 .search_container {
@@ -31,7 +31,7 @@ box-shadow: 14px 7px 20px -3px var(--color-primary);
   padding: 6px 12px;
   border-radius: 4px;
   gap: 10px;
-  margin: 10px 0; 
+  margin: 10px 0;
   width: 100%;
 }
 
@@ -51,7 +51,6 @@ box-shadow: 14px 7px 20px -3px var(--color-primary);
   font-size: 18px;
   color: var(--color-primary);
   padding: 10px 0;
-  
 }
 
 .icon_link {

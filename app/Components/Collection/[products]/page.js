@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import styles from "./page.module.css";
 import NavAction from "../../../Navbar/NavAction";
-import Footer from "../../footer/Footre";
+import Footer from "../../../footer/Footre";
 import Image from "next/image";
 async function getProduct(id) {
   try {

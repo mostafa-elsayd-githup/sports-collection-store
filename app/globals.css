@@ -1,36 +1,4 @@
 @import "tailwindcss";
-/* :root {
-
-  --bg-main: #ffffff;       
-  --bg-primary: #f8f9fa;   
-  --bg-card: #ffffff;       
-  --bg-dis: #f6f4e7;        
-  
-  --color-primary: #000000; 
-  --color-main: #ffffff;   
-  --color-secondary: #777777;
-  
-  --text-fetch: #00000048; 
-  --color-sale: #a20000;  
-  --rating-color: #ffb400; 
-  --border-color: #ebedee; 
-}
-
-.dark {
-
-  --bg-main: #000000;     
-  --bg-primary: #1a1a1a;   
-  --bg-card: #111111;      
-  --bg-dis: #1c1b17;      
-  
-  --color-primary: #ffffff;
-  --color-main: #000000;    
-  --color-secondary: #b0b0b0;
---text-fetch: #ffffff66;
-  --color-sale: #ff4d4d;   
-  --rating-color: #ffc107; 
-  --border-color: #333333; 
-} */
 :root {
   /* --- LIGHT MODE (نضيف، واثق، رياضي) --- */
   --bg-main: #ffffff;       /* الخلفية الأساسية */

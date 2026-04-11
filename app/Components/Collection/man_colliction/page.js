@@ -1,10 +1,10 @@
-"use server"
+"use client"
 import styles from "./man_colliction.module.css";
 import Link from "next/link";
 import "aos/dist/aos.css";
 import Clube from "./shrat_clube";
 import Mans_section from "./mans_section/mans_section";
-import Footer from "../../footer/Footre";
+import Footer from "../../../footer/Footre";
 import DiscoundComponent from "./discound_componente/discounds";
 import NavAction from "../../../Navbar/NavAction";
 
@@ -20,7 +20,7 @@ function Man_Colliction() {
             Transform your attendance to the Hall Season.
           </p>
           <Link
-            href="/Components/Collection/man_colliction/product_section1_in_mancomponet?club=Men_s_Jerseys"
+            href="/Components/Collection/man_colliction/product_section1_in_mancomponet?type=Men_s_Jerseys"
             className={styles.button}
           >
             SHOP NOW

@@ -2,7 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
-export async function handleAction(prevstate, formData) {
+export default async function handleAction(prevstate, formData) {
   const button = formData.get("buttontype");
   const id = formData.get("id");
   const image = formData.get("image");

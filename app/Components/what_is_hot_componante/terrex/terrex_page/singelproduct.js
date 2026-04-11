@@ -12,7 +12,9 @@ import handleAction from "./ActionFile";
 import { useOpneing } from "../../../../RTK/storcontext";
 import {useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-const SingleProduct = ({ productItem, isfevorite }) => {
+const SingleProduct = ({ productItem, isfevorite}) => {
+
+  
   const Router = useRouter()
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
@@ -36,7 +38,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
     }
   })
   const [actionTypeState, setActionTypeState] = useState("");
-  const { setIsOpen, setSelectedProduct } = useOpneing();
+  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -66,7 +68,10 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         <button
           type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("wishlist")}
+          onMouseDown={() =>{
+             setActionTypeState("wishlist")
+            setisfevorite(!isfevorite)
+            }}
           style={{
             background: "none",
             border: "none",

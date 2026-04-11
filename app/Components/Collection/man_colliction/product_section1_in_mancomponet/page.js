@@ -4,7 +4,7 @@ import Link from "next/link";
 import SingleProduct from "./singleProduct_for_Ceation1";
 
 import styles from "./products.module.css";
-import Footer from "../../../footer/Footre";
+import Footer from "../../../../footer/Footre";
 import DiscoundComponent from "../discound_componente/discounds";
 import NotFoundComponent from "../../../Hero/NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
@@ -78,7 +78,7 @@ async function Product({ searchParams }) {
         <div className={styles.products}>
           {data &&
             data.map((item) => {
-              const isfavorite = wishlistdata.some(
+              const isfavorite = !!wishlistdata.some(
                 (wishlist) => wishlist.id === item.id,
               );
               return (

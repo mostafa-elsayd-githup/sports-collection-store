@@ -31,14 +31,15 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         timer: 3000,
         timerProgressBar: true,
         showConfirmButton: false,
-        willClose: () => { // <=callback function
+        willClose: () => {
+          // <=callback function
           Router.replace("/register");
         },
       });
     }
   });
   const [actionTypeState, setActionTypeState] = useState("");
-  const { setIsOpen, setSelectedProduct } = useOpneing();
+  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -72,7 +73,10 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         <button
           type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("wishlist")}
+          onMouseDown={() => {
+            setActionTypeState("wishlist");
+            setisfevorite(!isfevorite);
+          }}
           style={{
             background: "none",
             border: "none",

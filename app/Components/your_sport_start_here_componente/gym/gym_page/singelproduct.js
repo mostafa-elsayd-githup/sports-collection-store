@@ -36,7 +36,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
     }
   })
   const [actionTypeState, setActionTypeState] = useState("");
-  const { setIsOpen, setSelectedProduct } = useOpneing();
+  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -66,7 +66,11 @@ const SingleProduct = ({ productItem, isfevorite }) => {
         <button
           type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("wishlist")}
+          onMouseDown={() => {
+            setActionTypeState("wishlist")
+            setisfevorite(!isfevorite)
+          
+          }}
           style={{
             background: "none",
             border: "none",

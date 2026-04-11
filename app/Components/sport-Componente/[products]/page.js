@@ -1,8 +1,9 @@
 "use server";
 import NavAction from "../../../Navbar/NavAction";
-import Footer from "../../footer/Footre";
+import Footer from "../../../footer/Footre";
 import Products from "./client_component";
 import styles from "./page.module.css";
+
 
 async function getWishlist() {
   try {

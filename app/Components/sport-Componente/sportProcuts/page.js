@@ -5,6 +5,7 @@ import styles from "./sportproducts.module.css";
 import SingleProduct from "./SingleProduct";
 import NavAction from "../../../Navbar/NavAction";
 import MiniDrowp from "./minidrowp/minidrowp";
+import Footer from "../../../footer/Footre";
 
 async function getwishlist() {
   try {
@@ -76,7 +77,7 @@ async function Product({ searchParams }) {
         <MiniDrowp/>
         <div className={styles.products}>
           {data && data.map((item) => {
-            const isfevorite = wishlistdata.some((wish) => wish.id === item.id);
+            const isfevorite = !!wishlistdata.some((wish) => wish.id === item.id);
             return (
               <SingleProduct
                 key={item.id} 
@@ -87,6 +88,7 @@ async function Product({ searchParams }) {
           })}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

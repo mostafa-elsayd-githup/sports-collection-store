@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import Link from "next/link";
 import SingleProduct from "./SingleProduct_Liverpool";
 import styles from "./page.module.css";
-import Footer from "../../../footer/Footre";
+import Footer from "../../../../footer/Footre";
 import DiscoundComponent from "../discound_componente/discounds";
 import NotFoundComponent from "../../../Hero/NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";

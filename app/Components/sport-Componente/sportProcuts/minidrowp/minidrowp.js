@@ -12,9 +12,11 @@ import { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
-export default function MiniDrowp({ isfevorite }) {
+export default function MiniDrowp() {
   const Router = useRouter();
-  const { isOpen, setIsOpen, selectedProduct } = useOpneing();
+  const { isOpen, setIsOpen, selectedProduct, isfevorite, setisfevorite } =
+    useOpneing();
+
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
     handelAction,
@@ -170,7 +172,9 @@ export default function MiniDrowp({ isfevorite }) {
                   e.preventDefault;
                   const result = await CheckCookes();
                   if (result.success) {
-                    Router.push(`/Components/sport-Componente/${selectedProduct.id}`)
+                    Router.push(
+                      `/Components/sport-Componente/${selectedProduct.id}`,
+                    );
                   } else {
                     Swal.fire({
                       title: "Login Required",
@@ -247,7 +251,10 @@ export default function MiniDrowp({ isfevorite }) {
                 <button
                   className={styles.wishlistBtn}
                   type="submit"
-                  onMouseDown={() => setActionTypeState("wishlist")}
+                  onMouseDown={() => {
+                    setActionTypeState("wishlist");
+                    setisfevorite(!isfevorite);
+                  }}
                 >
                   <FontAwesomeIcon
                     className={styles.icon}

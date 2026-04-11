@@ -1,21 +1,21 @@
 "use client";
 import styles from "./minidrowp.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { useOpneing } from "../../../../../RTK/storcontext";
-import handelAction, {CheckCookies} from "./miniaction";
+import handelAction, { CheckCookies } from "./miniaction";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
-export default function MiniDrowp({ isfevorite }) {
+export default function MiniDrowp({}) {
   const Router = useRouter();
-  const { isOpen, setIsOpen, selectedProduct } = useOpneing();
+  const { isOpen, setIsOpen, selectedProduct, isfevorite, setisfevorite } =
+    useOpneing();
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
     handelAction,
@@ -158,7 +158,7 @@ export default function MiniDrowp({ isfevorite }) {
                   const ruselt = await CheckCookies();
                   if (ruselt.success) {
                     Router.push(
-                      `/Components/what_is_hot_componante/terrex/${selectedProduct.id}`,
+                      `/Components/your_sport_start_here_componente/running/${selectedProduct.id}`,
                     );
                   } else {
                     Swal.fire({
@@ -236,7 +236,10 @@ export default function MiniDrowp({ isfevorite }) {
                 <button
                   className={styles.wishlistBtn}
                   type="submit"
-                  onMouseDown={() => setActionTypeState("wishlist")}
+                  onMouseDown={() => {
+                    setActionTypeState("wishlist");
+                    setisfevorite(!isfevorite);
+                  }}
                 >
                   <FontAwesomeIcon
                     className={styles.icon}

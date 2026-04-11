@@ -4,7 +4,7 @@ import Section2 from "./section2/section2";
 import Woman_section from "./woman_section/woman_section";
 import Discound_section from "./discound_product_section/discound_section";
 import DiscoundComponent from "../man_colliction/discound_componente/discounds";
-import Footer from "../../footer/Footre";
+import Footer from "../../../footer/Footre";
 import NavAction from "../../../Navbar/NavAction";
 function Woman() {
   return (

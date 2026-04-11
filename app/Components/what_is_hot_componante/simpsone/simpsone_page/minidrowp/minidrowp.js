@@ -6,15 +6,16 @@ import Image from "next/image";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import handelAction, {CheckCookies} from "./miniaction";
+import handelAction, { CheckCookies } from "./miniaction";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
-export default function MiniDrowp({ isfevorite }) {
+export default function MiniDrowp() {
   const Router = useRouter();
-  const { isOpen, setIsOpen, selectedProduct } = useOpneing();
+  const { isOpen, setIsOpen, selectedProduct, isfevorite, setisfevorite } =
+    useOpneing();
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
     handelAction,
@@ -29,10 +30,11 @@ export default function MiniDrowp({ isfevorite }) {
         title: "Login Required",
         text: "Please log in to continue. Redirecting...",
         icon: "error",
-        timer: 2500, 
-        timerProgressBar: true, 
+        timer: 2500,
+        timerProgressBar: true,
         showConfirmButton: false,
-        willClose: () => { // <=callback function
+        willClose: () => {
+          // <=callback function
           Router.replace("/register");
         },
       });
@@ -162,7 +164,7 @@ export default function MiniDrowp({ isfevorite }) {
             {/* actions */}
             <div className={styles.actions}>
               {/* view product button */}
-               <Link
+              <Link
                 className={styles.View_ProductBtn}
                 href={""}
                 onClick={async (e) => {
@@ -180,7 +182,8 @@ export default function MiniDrowp({ isfevorite }) {
                       timer: 3000,
                       timerProgressBar: true,
                       showConfirmButton: false,
-                      willClose: () => {  // <= callback function
+                      willClose: () => {
+                        // <= callback function
                         Router.replace("/register");
                       },
                     });
@@ -192,39 +195,51 @@ export default function MiniDrowp({ isfevorite }) {
                   <FontAwesomeIcon icon={faRightLong} />
                 </span>
               </Link>
-              
+
               <form
                 className={styles.icons}
                 onClick={(e) => e.stopPropagation()}
                 action={formAction}
               >
                 {/*data for ActionFile*/}
-                <input type="hidden" name="id" value={selectedProduct.id} />
+                <input
+                  type="hidden"
+                  name="id"
+                  value={selectedProduct.id || ""}
+                />
                 <input
                   type="hidden"
                   name="image"
-                  value={selectedProduct.image}
+                  value={selectedProduct.image || ""}
                 />
-                <input type="hidden" name="dis" value={selectedProduct.dis} />
-                <input type="hidden" name="name" value={selectedProduct.name} />
+                <input
+                  type="hidden"
+                  name="dis"
+                  value={selectedProduct.dis || ""}
+                />
+                <input
+                  type="hidden"
+                  name="name"
+                  value={selectedProduct.name || ""}
+                />
                 <input
                   type="hidden"
                   name="price"
-                  value={selectedProduct.price}
+                  value={selectedProduct.price || ""}
                 />
-                <input type="hidden" name="size" value={selectedSize} />
+                <input type="hidden" name="size" value={selectedSize || ""} />
                 <input
                   type="hidden"
                   name="category"
-                  value={selectedProduct.category}
+                  value={selectedProduct.category || ""}
                 />
                 <input
                   type="hidden"
                   name="actiontype"
-                  value={actionTypeState}
+                  value={actionTypeState || ""}
                 />
                 <button
-                  className={`${styles.addToCartBtn} `} //${AddToCart === false ? styles.activeBut : ""}
+                  className={`${styles.addToCartBtn} `}
                   type="submit"
                   onMouseDown={() => setActionTypeState("card")}
                 >
@@ -236,7 +251,10 @@ export default function MiniDrowp({ isfevorite }) {
                 <button
                   className={styles.wishlistBtn}
                   type="submit"
-                  onMouseDown={() => setActionTypeState("wishlist")}
+                  onMouseDown={() => {
+                    setActionTypeState("wishlist");
+                    setisfevorite(!isfevorite);
+                  }}
                 >
                   <FontAwesomeIcon
                     className={styles.icon}

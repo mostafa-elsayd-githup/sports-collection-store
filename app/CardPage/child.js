@@ -5,7 +5,7 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CardPage.module.css";
-import Footer from "../Components/footer/Footre";
+import Footer from "../footer/Footre";
 import { useActionState } from "react";
 import HandleAction from "./Action";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
