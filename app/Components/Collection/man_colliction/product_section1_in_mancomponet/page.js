@@ -1,17 +1,16 @@
 "use server";
-import { Container } from "react-bootstrap";
 import Link from "next/link";
 import SingleProduct from "./singleProduct_for_Ceation1";
-
 import styles from "./products.module.css";
 import Footer from "../../../../footer/Footre";
 import DiscoundComponent from "../discound_componente/discounds";
 import NotFoundComponent from "../../../Hero/NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
+import MiniDrowp from "./minidrowp/minidrowp";
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
-      cache: "no-store", // ضروري جداً عشان يجيب البيانات الجديدة دايماً
+      cache: "no-store",
       next: { tags: ["wishlist"] },
     });
     if (!res.ok) return [];
@@ -37,7 +36,7 @@ async function getData(categoryKey) {
 
 async function Product({ searchParams }) {
   const qurey = await searchParams;
-  const categoryKey = qurey.club;
+  const categoryKey = qurey.type;
   const data = await getData(categoryKey);
   const wishlistdata = await getWishlist();
 
@@ -75,9 +74,10 @@ async function Product({ searchParams }) {
             </span>
           </h1>
         </div>
+        <MiniDrowp/>
         <div className={styles.products}>
           {data &&
-            data.map((item) => {
+            data.map((item, index) => {
               const isfavorite = !!wishlistdata.some(
                 (wishlist) => wishlist.id === item.id,
               );

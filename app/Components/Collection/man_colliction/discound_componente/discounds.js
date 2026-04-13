@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Button, Nav } from "react-bootstrap";
 import Link from "next/link";
 import styles from "./discounds.module.css";
-import { useEffect } from "react";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 

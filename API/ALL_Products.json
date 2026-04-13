@@ -1,36 +1,12 @@
 {
   "users": [
     {
-      "id": "1775055405528",
+      "id": "1776091526779",
       "name": "mostafa elsayd mostafa",
-      "email": "mostafalasyd809@gmail.com",
+      "email": "mo@gmail.com",
       "password": "123456789",
       "role": "user",
-      "createdAt": "2026-04-01T14:56:45.528Z"
-    },
-    {
-      "id": "1775056314498",
-      "name": "eslam",
-      "email": "eslam@gmail.com",
-      "password": "123456789",
-      "role": "user",
-      "createdAt": "2026-04-01T15:11:54.498Z"
-    },
-    {
-      "id": "1775488191268",
-      "name": "mostafa elsayd mostafa",
-      "email": "mostafaalsyd809@gmail.com",
-      "password": "123456789",
-      "role": "user",
-      "createdAt": "2026-04-06T15:09:51.268Z"
-    },
-    {
-      "id": "1775489933797",
-      "name": "walaa elsayd",
-      "email": "walaa@gmail.com",
-      "password": "walaaelsaydmostafa",
-      "role": "user",
-      "createdAt": "2026-04-06T15:38:53.797Z"
+      "createdAt": "2026-04-13T14:45:26.779Z"
     }
   ],
   "products": [
@@ -2792,7 +2768,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/a95667c0db994e4fa5a68c4efa6bcac9_9366/KL0330_02_laydown_hover.jpg",
       "url": [],
       "rating": 4.3,
-      "description": "شورت تدريب بمرونة عالية"
+      "description": "شورت تدريب بمرونة عالية",
+      "watchde": 1,
+      "watchedTokens": [
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
+      ]
     },
     {
       "id": "136",
@@ -2812,7 +2792,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/9e5deaf1b3e8445ea83ce25383b9d719_9366/KL0346_02_laydown_hover.jpg",
       "url": [],
       "rating": 4.5,
-      "description": "تيشيرت تدريب خفيف ومريح مناسب للچيم"
+      "description": "تيشيرت تدريب خفيف ومريح مناسب للچيم",
+      "watchde": 1,
+      "watchedTokens": [
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
+      ]
     },
     {
       "id": "137",
@@ -2833,7 +2817,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/b83877baacb9424082db9ef245fa69e6_9366/KL0363_41_detail_hover.jpg",
       "url": [],
       "rating": 4.7,
-      "description": "تيشيرت حريمي مناسب للتمارين الشاقة"
+      "description": "تيشيرت حريمي مناسب للتمارين الشاقة",
+      "watchde": 1,
+      "watchedTokens": [
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
+      ]
     },
     {
       "id": "138",
@@ -2911,7 +2899,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/c82a6651c87d45d88e54b34f82c736c6_9366/KL0336_02_laydown_hover.jpg",
       "url": [],
       "rating": 4.7,
-      "description": "حمالة صدر رياضية بدعم ممتاز"
+      "description": "حمالة صدر رياضية بدعم ممتاز",
+      "watchde": 1,
+      "watchedTokens": [
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
+      ]
     },
     {
       "id": "142",
@@ -3051,7 +3043,11 @@
       "image_Hover": "https://assets.adidas.com/images/w_450,f_auto,q_auto/56c2a50e942145a78850e7150225aef2_9366/JK2725_41_detail_hover.jpg",
       "url": [],
       "rating": 4.5,
-      "description": "بنطلون تدريب مريح وعملي"
+      "description": "بنطلون تدريب مريح وعملي",
+      "watchde": 1,
+      "watchedTokens": [
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
+      ]
     },
     {
       "id": "149",
@@ -8011,17 +8007,48 @@
     }
   ],
   "products_child_section": [],
-  "cart": [],
+  "cart": [
+    {
+      "id": "257-L",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/68de0a720f76498c9c07ec848fdcdb65_9366/IH6878_00_plp_standard.jpg",
+      "name": "شبشب ADILETTE OG CF",
+      "price": "3,799.00 ",
+      "old_price": null,
+      "category": "Originals",
+      "sizes": "L",
+      "quantity": 1,
+      "productId": "257"
+    }
+  ],
   "wishlist": [
     {
-      "id": "305",
-      "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/8e7f62bc40ca4b95ac637924ee89485c_9366/KI6928_01_00_standard.jpg",
-      "name": "Adizero EVO SL Shoes",
-      "price": "11,999.00",
+      "id": "263",
+      "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/4b2b8ce052bb4b70818e8283044777cd_9366/JZ9664_21_model.jpg",
+      "name": "تيشيرت ADIDAS BASKETBALL GRAPHIC",
+      "price": "2,799.00",
       "old_price": null,
-      "category": " Women Running ",
-      "sizes": "",
+      "category": "backt ball",
+      "sizes": "M",
       "quantity": 1
+    },
+    {
+      "id": "250",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/7413109afe1e443b9a9836a9a46fca32_9366/JS4974_00_plp_standard.jpg",
+      "name": "ADILETTE CMFT AFA Slides",
+      "price": "3,999.00 ",
+      "old_price": null,
+      "category": "Sportswear",
+      "sizes": "M",
+      "quantity": 1
+    },
+    {
+      "id": "229",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/3ce6dc386217438ead9ee247baa978e2_9366/IG3861_HM1.jpg",
+      "name": "Dropset 3 Training حذاء",
+      "price": "9,499.00",
+      "old_price": null,
+      "category": "Gym & Training (Man)",
+      "sizes": "S"
     }
   ]
 }

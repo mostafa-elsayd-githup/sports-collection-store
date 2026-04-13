@@ -1,5 +1,6 @@
-"use server";
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import {
   faClockRotateLeft,
   faCreditCard,
@@ -7,41 +8,41 @@ import {
   faLock,
   faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
   faTruck,
 } from "@fortawesome/free-regular-svg-icons";
 import styles from "./page.module.css";
-import NavAction from "../../../Navbar/NavAction";
-import Footer from "../../../footer/Footre";
-import Image from "next/image";
-async function getProduct(id) {
-  try {
-    const res = await fetch(
-      `http://localhost:1200/products/${id}`,
-      {
-        // next: { revalidate: 60 },
-        cache: "no-cache",
-      },
-    );
-    if (!res.ok) return undefined;
-    const data = await res.json();
-    return data;
-  } catch {
-    throw new Error("لا يمكن الاتصال بالسيرفر، تأكد من تشغيل json-server");
-  }
-}
-
-export default async function ProductPage({ params }) {
-  const resolvedParams = await params;
-  const productId = resolvedParams.products;
-  const product = await getProduct(productId);
-  if (!product) notFound();
-  const fillWidth = (product.rating / 5) * 100;
-
+import { useActionState, useEffect } from "react";
+import handelAction from "./ActionFile";
+import { useState } from "react";
+import { useRouter, redirect } from "next/navigation";
+import { useOpneing } from "../../../../../../RTK/storcontext";
+export default function Products({ fillWidth, product, isfevorite }) {
+  const Router = useRouter();
+  const initialState = { massage: "", stat: null };
+  const [state, formAction, pending] = useActionState(
+    handelAction,
+    initialState,
+  );
+  const { setisfevorite } = useOpneing();
+  const [actionTypeState, setActionTypeState] = useState("");
+  const [selectedSize, setselectedSize] = useState("");
+  const [AddToCart, setAddToCart] = useState(false);
+  useEffect(() => {
+    if (state?.state === 401) {
+      redirect("/register");
+    }
+  }, [state, Router]);
   return (
-    <div className={styles.wrapper}>
-      <NavAction />
+    <>
+      {/* loader */}
+      {pending && (
+        <div className={styles.overlay}>
+          <div className={styles.halfCircleLoader}></div>
+        </div>
+      )}
       <div className={styles.container}>
         <div className={styles.imageGallery}>
           <div className={styles.imageContainer}>
@@ -91,7 +92,7 @@ export default async function ProductPage({ params }) {
           </div>
         </div>
 
-        {/* الجزء الأيمن: تفاصيل المنتج */}
+        {/* product*/}
         <div className={styles.infoSection}>
           <div className={styles.headerInfo}>
             <h1 className={styles.productName}>{product.name}</h1>
@@ -122,42 +123,79 @@ export default async function ProductPage({ params }) {
             </div>
           </div>
 
-          {/* اختيار المقاسات - Static Grid */}
+          {/* sizes*/}
           <div className={styles.sizeSection}>
             <h3 className={styles.sectionTitle}>Select Size</h3>
             <div className={styles.sizeGrid}>
               {product.sizes.map((size) => (
-                <button key={size} className={styles.sizeBox}>
+                <button
+                  key={size}
+                  className={`${styles.sizeBox} ${selectedSize === size ? styles.activeSize : ""}`}
+                  onClick={() => {
+                    if (selectedSize === size) {
+                      setselectedSize(null);
+                      setAddToCart(false);
+                    } else {
+                      setselectedSize(size);
+                      setAddToCart(true);
+                    }
+                  }}
+                >
                   {size}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* أزرار الأكشن */}
+          {/* actions */}
           <div className={styles.actions}>
-            <button className={styles.addToCartBtn}>
-              ADD TO BAG
-              <span className={styles.arrowIcon}>
-                <FontAwesomeIcon icon={faRightLong} />
-              </span>
-            </button>
-            <button className={styles.wishlistBtn}>
-              <FontAwesomeIcon
-                className={styles.icon}
-                icon={farHeart}
-                // icon={isInWishlist ? fasHeart : farHeart}
-                // onClick={() => Dispatch(addToWishlist(productItem))}
-              />
-            </button>
+            <form
+              className={styles.icons}
+              onClick={(e) => e.stopPropagation()}
+              action={formAction}
+            >
+              {/*data for ActionFile*/}
+              <input type="hidden" name="id" value={product.id || ""} />
+              <input type="hidden" name="image" value={product.image || ""} />
+              <input type="hidden" name="dis" value={product.dis || ""} />
+              <input type="hidden" name="name" value={product.name || ""} />
+              <input type="hidden" name="price" value={product.price || ""} />
+              <input type="hidden" name="size" value={selectedSize || ""} />
+              <input type="hidden" name="category" value={product.category || ""} />
+              <input type="hidden" name="actiontype" value={actionTypeState || ""} />
+              <button
+                className={`${styles.addToCartBtn} ${AddToCart === false ? styles.activeBut : ""}`}
+                type="submit"
+                onMouseDown={() => setActionTypeState("card")}
+              >
+                ADD TO BAG
+                <span className={styles.arrowIcon}>
+                  <FontAwesomeIcon icon={faRightLong} />
+                </span>
+              </button>
+              <button
+                className={styles.wishlistBtn}
+                type="submit"
+                onMouseDown={() => {
+                  setActionTypeState("wishlist");
+                  setisfevorite(!isfevorite);
+                }}
+              >
+                <FontAwesomeIcon
+                  className={styles.icon}
+                  icon={isfevorite ? fasHeart : farHeart}
+                />
+              </button>
+            </form>
           </div>
+          <span style={{ color: "red", fontSize: "1rem" }}>
+            {state?.message}
+          </span>
 
           <div className={styles.ratingWrapper}>
             <div className={styles.starsContainer}>
-              {/* النجوم الرمادية */}
               <div className={styles.starsEmpty}>★★★★★</div>
 
-              {/* النجوم الذهبية المتحركة */}
               <div
                 className={styles.starsFilled}
                 style={{ width: `${fillWidth}%` }}
@@ -167,9 +205,9 @@ export default async function ProductPage({ params }) {
             </div>
 
             <span className={styles.ratingText}>
-              {product.rating || 0}
+              [ {product.rating} ]
               <span className={styles.reviewsCount}>
-                ({product.reviews_count || 0} reviews)
+                ({product.watchde || 0} reviews)
               </span>
             </span>
           </div>
@@ -217,8 +255,8 @@ export default async function ProductPage({ params }) {
             </div>
           </div>
         </div>
+        <div></div>
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }

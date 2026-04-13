@@ -11,11 +11,7 @@
   font-family: "AdihausDIN", sans-serif;
   font-weight: 700;
   margin-left: 5px;
-  margin: 25px 10px ;
-}
-
-.Shoes {
-  background-image: url(/man_section1.svg);
+  margin: 25px 10px;
 }
 .Shoes,
 .T_shirt,
@@ -31,6 +27,10 @@
   align-items: center;
   width: 100%;
 }
+
+.Shoes {
+  background-image: url(/man_section1.svg);
+}
 .T_shirt {
   background-image: url(/man_scetion3.svg);
 }
@@ -42,9 +42,10 @@
 }
 .card {
   position: absolute;
-  bottom: 0;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
+  border: none;
 }
 .img {
   position: absolute;
@@ -63,13 +64,13 @@
   background-color: var(--bg-primary);
   transition: all 0.3s ease;
   width: 150px;
+  padding: 0.5rem;
 }
 
 .Button:hover {
   color: #000;
   background-color: #eeeeee7a;
 }
-
 
 @media (max-width: 768px) {
   .Containers {

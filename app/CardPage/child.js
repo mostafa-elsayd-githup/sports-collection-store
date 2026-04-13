@@ -7,7 +7,7 @@ import { faXmark, faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CardPage.module.css";
 import Footer from "../footer/Footre";
 import { useActionState } from "react";
-import HandleAction from "./Action";
+import DeleteCart from "./Action";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -16,7 +16,7 @@ import {
 const CartPage = ({ card }) => {
   const intinaldata = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
-    HandleAction,
+    DeleteCart,
     intinaldata,
   );
 

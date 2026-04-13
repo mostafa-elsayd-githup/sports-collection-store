@@ -5,12 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import style from "./navbar.module.css";
 import ThemeToggle from "../button/button";
-
 function NavBar({ cartCount, wishlistCount }) {
   return (
     <Navbar expand="lg" className={`fixed-top ${style.navbar_container}`}>
       <div className="container-fluid py-1 px-md-5 d-flex align-items-center">
-        {/* 1. اللوجو */}
         <Link href="/" className="navbar-brand">
           <Image
             src="/logo.svg"
@@ -21,7 +19,6 @@ function NavBar({ cartCount, wishlistCount }) {
           />
         </Link>
 
-        {/* زرار الموبايل */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           className={style.icon_mobile}
@@ -31,7 +28,6 @@ function NavBar({ cartCount, wishlistCount }) {
           id="basic-navbar-nav"
           className={style.navbar_collapse_custom}
         >
-          {/* 2. الروابط كاملة */}
           <Nav className="mx-auto">
             <Link href="/" className={style.link}>
               HOME
@@ -63,12 +59,12 @@ function NavBar({ cartCount, wishlistCount }) {
             <Link href="/Profile" className={style.link}>
               PROFILE
             </Link>
+
             <Link href="/register" className={style.link}>
               REGISTRE
             </Link>
           </Nav>
 
-          {/* 3. البحث والأيقونات */}
           <div className={style.icon_group}>
             <div className={style.search_container}>
               <input
@@ -90,7 +86,7 @@ function NavBar({ cartCount, wishlistCount }) {
 
             <Link href="/CardPage" className={style.icon_link}>
               <i className="fa-solid fa-bag-shopping"></i>
-              {cartCount && cartCount.length > 0  ? (
+              {cartCount && cartCount.length > 0 ? (
                 <span className={style.badge}>{cartCount?.length || 0}</span>
               ) : null}
             </Link>

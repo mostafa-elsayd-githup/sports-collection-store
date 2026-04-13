@@ -6,13 +6,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules"; // استيراد موديل الاوتو بلاي
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 function Clube() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // مدة الأنميشن بالملي ثانية
-      once: true, // الأنميشن يشتغل مرة واحدة بس وأنت نازل
+      duration: 1000, 
+      once: true, 
     });
   }, []);
 
@@ -22,11 +22,11 @@ function Clube() {
         spaceBetween={20}
         slidesPerView={"auto"}
         className="mySwiper"
-        // 2. فعل الموديلات هنا
+        
         modules={[Autoplay]}
-        // 3. ضبط إعدادات الأوتو بلاي
+        
         autoplay={{
-          delay: 3000, // 4 ثواني
+          delay: 3000, // 3 ثواني
           disableOnInteraction: false,
         }}
       >

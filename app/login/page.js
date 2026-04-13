@@ -14,7 +14,7 @@ import { loginAction } from "./action";
 import { useActionState } from "react";
 
 const LoginPage = () => {
-  const [state, formAction, pending] = useActionState(loginAction, { message: "" });
+  const [state, formAction, pending] = useActionState(loginAction, { message: "" , state:null});
   return (
     <div className={styles.mainWrapper}>
       {/* loader */}

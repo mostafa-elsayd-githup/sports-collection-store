@@ -6,6 +6,7 @@ import Footer from "../../../../footer/Footre";
 import DiscoundComponent from "../discound_componente/discounds";
 import NotFoundComponent from "../../../Hero/NotFoundComponent";
 import NavAction from "../../../../Navbar/NavAction";
+import MiniDrowp from "../product_section1_in_mancomponet/minidrowp/minidrowp";
 async function getWishlist() {
   try {
     const res = await fetch(`http://localhost:1200/wishlist`, {
@@ -120,7 +121,7 @@ async function Product({ searchParams }) {
           </h1>
           <p>{currentClub.description}</p>
         </div>
-
+        <MiniDrowp/>
         <div className={styles.products}>
           {data && data.length > 0 ? (
             data.map((item) => {

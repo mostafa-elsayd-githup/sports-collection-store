@@ -1,8 +1,7 @@
 "use client";
-
 import { useEffect } from "react";
 import style from "./error.module.css"; 
-import { Link } from "next/navigation";
+import  Link  from "next/link";
 export default function Error({ error, reset }) {
   
   useEffect(() => {

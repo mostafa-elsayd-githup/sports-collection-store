@@ -4,6 +4,7 @@ import SingleProduct from "./singelproduct";
 import { Container } from "react-bootstrap";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../../Navbar/NavAction";
+import MiniDrowp from "./minidrowp/minidrowp";
 
 async function getWishlist() {
   try {
@@ -21,7 +22,7 @@ async function getWishlist() {
 async function gitdata() {
   try {
     const res = await fetch(
-      `http://localhost:1200/your_sport_start_hear_running`,
+      `http://localhost:1200/man_section_shoes`,
       { next: { revalidate: 60 } },
     );
     if (!res.ok) {
@@ -73,6 +74,7 @@ async function Product() {
             </span>
           </h1>
         </div>
+        <MiniDrowp/>
         <div className={styles.products}>
           {data &&
             data.map((item) => {

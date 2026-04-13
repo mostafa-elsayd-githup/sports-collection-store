@@ -1,4 +1,3 @@
-"use client"
 import styles from "./man_colliction.module.css";
 import Link from "next/link";
 import "aos/dist/aos.css";
@@ -11,8 +10,8 @@ import NavAction from "../../../Navbar/NavAction";
 function Man_Colliction() {
   return (
     <>
-      <NavAction />
-      {/*  قسم ال celebrations 1*/}
+      <NavAction /> {/* <= server componet dont add "use client" */}
+
       <section className={styles.head} data-aos="fade-up">
         <div className={styles.container_info}>
           <h1 className={styles.title}>Go on the celebrations.</h1>
@@ -28,7 +27,6 @@ function Man_Colliction() {
         </div>
       </section>
 
-      {/*  قسم ال celebrations 2*/}
       <section className={styles.head2} data-aos="fade-up">
         <div className={styles.container_info}>
           <h1 className={styles.title}>Go on the celebrations.</h1>
@@ -45,8 +43,7 @@ function Man_Colliction() {
         </div>
       </section>
 
-      {/* قمصان الانديه */}
-
+      {/* man club */}
       <div data-aos="fade-up" className={styles.Container_shart}>
         <div>
           <h1 className={styles.hrader}>CALLING OUT ALL FOOTBALL FANS</h1>
@@ -63,10 +60,7 @@ function Man_Colliction() {
       <section data-aos="fade-up" className={styles.mans_section}>
         <Mans_section />
       </section>
-
-      {/*  قسم ال discound  */}
       <DiscoundComponent />
-      {/* footer */}
       <Footer />
     </>
   );

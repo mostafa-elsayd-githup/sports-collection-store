@@ -1,3 +1,4 @@
+"use client"
 import styles from "./NotFoundComponent.module.css";
 import Link from "next/link";
 

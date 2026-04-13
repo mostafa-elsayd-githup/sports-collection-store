@@ -1,6 +1,6 @@
 "use server"
 import { revalidatePath } from "next/cache";
-const HandleAction = async (prevstate, formData) => {
+const DeleteCart = async (prevstate, formData) => {
   const actionTypeState = formData.get("intent");
   const id = formData.get("id");
   if (actionTypeState === "delete") {
@@ -19,4 +19,4 @@ const HandleAction = async (prevstate, formData) => {
     //  revalidatePath("/", "layout");
   }
 };
-export default HandleAction;
+export default DeleteCart;

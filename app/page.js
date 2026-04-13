@@ -1,6 +1,3 @@
-// "use client";
-// استيراد المكونات
-
 import Hreo from "./Components/Hero/hero";
 import Sport from "./Components/sport-Componente/Sport";
 import MenCollection from "./Components/Collection/Collection"

@@ -1,8 +1,7 @@
 "use client";
 import styles from "./minidrowp.module.css";
-import { useOpneing } from "../../../../RTK/storcontext";
+import { useOpneing } from "../../../../../RTK/storcontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
@@ -12,10 +11,10 @@ import { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
-export default function MiniDrowp({ isfevorite }) {
+export default function MiniDrowp() {
   const Router = useRouter();
-  const { isOpen, setIsOpen, selectedProduct } = useOpneing();
-  console.log(isOpen)
+  const { isOpen, setIsOpen, selectedProduct, isfevorite, setisfevorite } = useOpneing();
+
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
     handelAction,
@@ -121,7 +120,7 @@ export default function MiniDrowp({ isfevorite }) {
               <div className={styles.colors_available}>
                 {selectedProduct.url.length} colours available
               </div>
-              <div className={styles.smil_image}>
+              {/* <div className={styles.smil_image}>
                 {selectedProduct.url.map((item) => {
                   return (
                     <span key={item.id}>
@@ -134,7 +133,7 @@ export default function MiniDrowp({ isfevorite }) {
                     </span>
                   );
                 })}
-              </div>
+              </div> */}
             </div>
 
             {/* sizes*/}
@@ -173,7 +172,7 @@ export default function MiniDrowp({ isfevorite }) {
                   const result = await checkCookes();
                   if (result.success) {
                     Router.push(
-                      `/Components/sport-Componente/${selectedProduct.id}`,
+                      `/Components/Collection/man_colliction/product_section1_in_mancomponet/${selectedProduct.id}`,
                     );
                   } else {
                     Swal.fire({
@@ -251,7 +250,10 @@ export default function MiniDrowp({ isfevorite }) {
                 <button
                   className={styles.wishlistBtn}
                   type="submit"
-                  onMouseDown={() => setActionTypeState("wishlist")}
+                  onMouseDown={() => {
+                    setActionTypeState("wishlist");
+                    setisfevorite(!isfevorite);
+                  }}
                 >
                   <FontAwesomeIcon
                     className={styles.icon}

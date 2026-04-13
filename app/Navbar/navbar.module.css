@@ -76,7 +76,7 @@
   right: -8px;
 }
 
-/* أهم جزء للموبايل */
+/* for mobile */
 @media (min-width: 992px) {
   .search_container {
     margin: 0 15px;
@@ -87,13 +87,5 @@
   }
   .icon_group {
     padding: 0;
-  }
-}
-
-@media (max-width: 991px) {
-  .navbar_collapse_custom {
-    background-color: var(--bg-primary);
-    padding: 20px;
-    border-top: 1px solid var(--border-color);
   }
 }

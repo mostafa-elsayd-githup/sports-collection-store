@@ -3,7 +3,8 @@
 import { revalidateTag } from "next/cache";
 
 export default async function handleAction(prevstate, formData) {
-  const button = formData.get("buttontype");
+  const buttontype = formData.get("actiontype");
+  
   const id = formData.get("id");
   const image = formData.get("image");
   const name = formData.get("name");
@@ -20,7 +21,7 @@ export default async function handleAction(prevstate, formData) {
     category,
     sizes,
   };
-  if (button === "cart") {
+  if (buttontype === "cart") {
     try {
       const chickcart = await fetch(`http://localhost:1200/cart/${product.id}`);
       if (chickcart.ok) {
@@ -43,7 +44,8 @@ export default async function handleAction(prevstate, formData) {
       // في حال تعذر الاتصال بالسيرفر أصلاً
       return { message: "عذراً، فشل الاتصال بالسيرفر", status: 500 };
     }
-  } else if (button === "wishlist") {
+  } else if (buttontype === "wishlist") {
+    
     try {
       const wishlist = await fetch(
         `http://localhost:1200/wishlist/${product.id}`,

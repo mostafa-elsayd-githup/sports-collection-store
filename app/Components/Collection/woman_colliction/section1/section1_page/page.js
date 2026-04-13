@@ -4,6 +4,7 @@ import SingleProduct from "./singelproduct";
 import { Container } from "react-bootstrap";
 import NotFoundComponent from "../NotFoundComponent";
 import NavAction from "../../../../../Navbar/NavAction";
+import MiniDrowp from "./minidrowp/minidrowp";
 
 async function getWishlist() {
   try {
@@ -73,6 +74,7 @@ async function Product() {
             </span>
           </h1>
         </div>
+        <MiniDrowp/>
         <div className={styles.products}>
           {data &&
             data.map((item) => {

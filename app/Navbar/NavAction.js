@@ -20,6 +20,6 @@ export default async function NavAction() {
 
     return <NavBar cartCount={countcart} wishlistCount={countwashlist} />;
   } catch (error) {
-    throw new Error
+    console.error(error)
   }
 }

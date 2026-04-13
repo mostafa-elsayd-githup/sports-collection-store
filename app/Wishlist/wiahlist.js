@@ -11,7 +11,6 @@ import { handelAction } from "./wishliestAction";
 import Link from "next/link";
 
 function Products({ wishlist }) {
-  console.log(wishlist);
   const [typeButton, settypeButoon] = useState("");
   const intialstate = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(

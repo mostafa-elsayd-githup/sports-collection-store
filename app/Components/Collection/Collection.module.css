@@ -45,8 +45,6 @@ background-position: inherit;
 
 .Button {
 color: var(--color-primary);
-/* color: #000; */
-  /* background-color: #fff; */
   background-color: var(--bg-primary);
   cursor: pointer;
   text-align: center;
