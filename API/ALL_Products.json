@@ -7,6 +7,14 @@
       "password": "123456789",
       "role": "user",
       "createdAt": "2026-04-13T14:45:26.779Z"
+    },
+    {
+      "id": "1776125229939",
+      "name": "eslam elasyd mostafa",
+      "email": "eslam@gmail.com",
+      "password": "123456789",
+      "role": "user",
+      "createdAt": "2026-04-14T00:07:09.939Z"
     }
   ],
   "products": [
@@ -8050,5 +8058,7 @@
       "category": "Gym & Training (Man)",
       "sizes": "S"
     }
-  ]
+  ],
+  "user_statistics":[]
+  
 }
