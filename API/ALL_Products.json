@@ -6,7 +6,21 @@
       "email": "mo@gmail.com",
       "password": "123456789",
       "role": "user",
-      "createdAt": "2026-04-13T14:45:26.779Z"
+      "createdAt": "2026-04-13T14:45:26.779Z",
+      "wishlist": [],
+      "cart": [],
+      "order": []
+    },
+    {
+      "id": "1776125229939",
+      "name": "eslam elasyd mostafa",
+      "email": "eslam@gmail.com",
+      "password": "123456789",
+      "role": "user",
+      "createdAt": "2026-04-14T00:07:09.939Z",
+      "wishlist": [],
+      "cart": [],
+      "order": []
     }
   ],
   "products": [
@@ -89,10 +103,7 @@
       "url": [],
       "rating": 4.8,
       "description": "حذاء تدريب بثبات عالي",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "5",
@@ -2769,10 +2780,7 @@
       "url": [],
       "rating": 4.3,
       "description": "شورت تدريب بمرونة عالية",
-      "watchde": 1,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
-      ]
+      "watchde": 1
     },
     {
       "id": "136",
@@ -2793,10 +2801,7 @@
       "url": [],
       "rating": 4.5,
       "description": "تيشيرت تدريب خفيف ومريح مناسب للچيم",
-      "watchde": 1,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
-      ]
+      "watchde": 1
     },
     {
       "id": "137",
@@ -2818,10 +2823,7 @@
       "url": [],
       "rating": 4.7,
       "description": "تيشيرت حريمي مناسب للتمارين الشاقة",
-      "watchde": 1,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
-      ]
+      "watchde": 1
     },
     {
       "id": "138",
@@ -2900,10 +2902,7 @@
       "url": [],
       "rating": 4.7,
       "description": "حمالة صدر رياضية بدعم ممتاز",
-      "watchde": 1,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
-      ]
+      "watchde": 1
     },
     {
       "id": "142",
@@ -3044,10 +3043,7 @@
       "url": [],
       "rating": 4.5,
       "description": "بنطلون تدريب مريح وعملي",
-      "watchde": 1,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODgxOTEyNjgiLCJlbWFpbCI6Im1vc3RhZmFhbHN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzU5NDE4MDksImV4cCI6MTc3NjAyODIwOX0.cjcIxVChmJJwpTXKFRKBnL4Qz53rhRPxr9006IpTZWE"
-      ]
+      "watchde": 1
     },
     {
       "id": "149",
@@ -6706,13 +6702,7 @@
       "Inventory": 0,
       "old_price": null,
       "quantity": 1,
-      "watchde": 4,
-      "watchedTokens": [
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzUwNTYzMTQ0OTgiLCJlbWFpbCI6ImVzbGFtQGdtYWlsLmNvbSIsImlhdCI6MTc3NTA1Njg3NSwiZXhwIjoxNzc1MTQzMjc1fQ.wz2jvbZoODFqZbeakXKoHEg0gbE7_UnqHDGPFjoL5a4",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzUwNTU0MDU1MjgiLCJlbWFpbCI6Im1vc3RhZmFsYXN5ZDgwOUBnbWFpbC5jb20iLCJpYXQiOjE3NzUwNTY5NjIsImV4cCI6MTc3NTE0MzM2Mn0.hyefIWp2mPR-QPfzMqI6qvMpfjwiw5CJyZAqlmDwLn8",
-        null,
-        null
-      ]
+      "watchde": 18
     },
     {
       "id": "306",
@@ -6735,11 +6725,7 @@
       "rating": 2,
       "Inventory": 6,
       "description": " Women Running ",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3NzU0ODk5MzM3OTciLCJlbWFpbCI6IndhbGFhQGdtYWlsLmNvbSIsImlhdCI6MTc3NTQ4OTk1MSwiZXhwIjoxNzc1NTc2MzUxfQ.3p5jFgRrRnB_5qIsjoNWtQP3PgC7g1ED3AY8O8OOTQ0"
-      ]
+      "watchde": 6
     },
     {
       "id": "307",
@@ -6761,11 +6747,7 @@
       "rating": 5,
       "Inventory": 2,
       "description": "Men Running",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        null
-      ]
+      "watchde": 2
     },
     {
       "id": "308",
@@ -6791,11 +6773,7 @@
       ],
       "rating": 3.4,
       "description": "Men Running",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        null
-      ]
+      "watchde": 2
     },
     {
       "id": "309",
@@ -6821,12 +6799,7 @@
       ],
       "rating": 4.6,
       "description": " Man Running ",
-      "watchde": 3,
-      "watchedTokens": [
-        null,
-        null,
-        null
-      ]
+      "watchde": 3
     },
     {
       "id": "310",
@@ -6863,10 +6836,7 @@
       "rating": 4.7,
       "Inventory": 8,
       "description": " Man Running ",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "311",
@@ -6910,11 +6880,7 @@
       "rating": 4.9,
       "Inventory": 6,
       "description": " Women Running ",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        null
-      ]
+      "watchde": 2
     },
     {
       "id": "312",
@@ -6938,10 +6904,7 @@
       "rating": 4.55,
       "Inventory": 1,
       "description": " Man Running ",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "313",
@@ -6963,10 +6926,7 @@
       "rating": 0.5554,
       "Inventory": 9,
       "description": " Man Running ",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "314",
@@ -6992,10 +6952,7 @@
       "rating": 4.9,
       "Inventory": 10,
       "description": " Man Running ",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "315",
@@ -7022,11 +6979,7 @@
       "rating": 4.6,
       "Inventory": 1,
       "description": " Man Running ",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        null
-      ]
+      "watchde": 2
     },
     {
       "id": "316",
@@ -7050,11 +7003,7 @@
       "rating": 3.7,
       "Inventory": 12,
       "description": " Women Running ",
-      "watchde": 2,
-      "watchedTokens": [
-        null,
-        null
-      ]
+      "watchde": 2
     },
     {
       "id": "317",
@@ -7076,10 +7025,7 @@
       "rating": 5,
       "Inventory": 1,
       "description": "Men TERREX",
-      "watchde": 1,
-      "watchedTokens": [
-        null
-      ]
+      "watchde": 1
     },
     {
       "id": "318",
@@ -7111,13 +7057,7 @@
       "rating": 1.8,
       "Inventory": 7,
       "description": " Running ",
-      "watchde": 4,
-      "watchedTokens": [
-        null,
-        null,
-        null,
-        null
-      ]
+      "watchde": 4
     }
   ],
   "your_sport_start_hear_Football": [
@@ -8007,48 +7947,5 @@
     }
   ],
   "products_child_section": [],
-  "cart": [
-    {
-      "id": "257-L",
-      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/68de0a720f76498c9c07ec848fdcdb65_9366/IH6878_00_plp_standard.jpg",
-      "name": "شبشب ADILETTE OG CF",
-      "price": "3,799.00 ",
-      "old_price": null,
-      "category": "Originals",
-      "sizes": "L",
-      "quantity": 1,
-      "productId": "257"
-    }
-  ],
-  "wishlist": [
-    {
-      "id": "263",
-      "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/4b2b8ce052bb4b70818e8283044777cd_9366/JZ9664_21_model.jpg",
-      "name": "تيشيرت ADIDAS BASKETBALL GRAPHIC",
-      "price": "2,799.00",
-      "old_price": null,
-      "category": "backt ball",
-      "sizes": "M",
-      "quantity": 1
-    },
-    {
-      "id": "250",
-      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/7413109afe1e443b9a9836a9a46fca32_9366/JS4974_00_plp_standard.jpg",
-      "name": "ADILETTE CMFT AFA Slides",
-      "price": "3,999.00 ",
-      "old_price": null,
-      "category": "Sportswear",
-      "sizes": "M",
-      "quantity": 1
-    },
-    {
-      "id": "229",
-      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/3ce6dc386217438ead9ee247baa978e2_9366/IG3861_HM1.jpg",
-      "name": "Dropset 3 Training حذاء",
-      "price": "9,499.00",
-      "old_price": null,
-      "category": "Gym & Training (Man)",
-      "sizes": "S"
-    }
-  ]
+  "user_statistics": []
 }

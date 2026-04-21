@@ -1,25 +1,30 @@
-"use server"
+"use server";
 import NavBar from "./navbar";
 import Error from "../error";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 export default async function NavAction() {
+  const cookietore = await cookies();
+  const token = cookietore.get("token")?.value;
+  const decryption = jwt.verify(token, process.env.JWT_SECRET);
+
   try {
-    const cartres = await fetch("http://localhost:1200/cart", {
-      next: { tags: ["cart"] },
-    });
+    const cartres = await fetch(
+      `http://localhost:1200/users/${decryption.id}`,
+      {
+        cache:"no-store",
+        next: { tags: ["navbar"] }
+      },
+    );
 
-    const washlistres = await fetch("http://localhost:1200/wishlist", {
-      next: { tags: ["wishlist"] },
-    });
-
-    if (!cartres.ok || !washlistres.ok) {
+    if (!cartres.ok) {
       throw new Error("السيرفر يعطي استجابة خاطئة");
     }
 
     const countcart = await cartres.json();
-    const countwashlist = await washlistres.json();
 
-    return <NavBar cartCount={countcart} wishlistCount={countwashlist} />;
+    return <NavBar productCount={countcart} />;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }

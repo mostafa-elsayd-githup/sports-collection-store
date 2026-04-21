@@ -1,6 +1,6 @@
 "use client";
 import styles from "./minidrowp.module.css";
-import { useOpneing } from "../../../../RTK/storcontext";
+import { useOpneing } from "../../../app/RTK/storcontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
@@ -15,7 +15,6 @@ export default function MiniDrowp() {
   const Router = useRouter();
   const { isOpen, setIsOpen, selectedProduct, isfevorite, setisfevorite } =
     useOpneing();
-  // console.log(selectedProduct);
 
   const initialState = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
@@ -205,22 +204,13 @@ export default function MiniDrowp() {
                 />
                 <input
                   type="hidden"
-                  name="name"
-                  value={selectedProduct.name || ""}
-                />
-
-                {selectedProduct.sizes?.map((item, index) => (
-                  <input
-                    key={index}
-                    type="hidden"
-                    name="sizes"
-                    value={item || ""}
-                  />
-                ))}
-                <input
-                  type="hidden"
                   name="dis"
                   value={selectedProduct.dis || ""}
+                />
+                <input
+                  type="hidden"
+                  name="name"
+                  value={selectedProduct.name || ""}
                 />
                 <input
                   type="hidden"
@@ -262,9 +252,9 @@ export default function MiniDrowp() {
                   type="submit"
                   onClick={() => {
                     setActionTypeState("wishlist");
-                    // console.log(state);
+                    console.log(state);
                     if (state !== undefined) {
-                      setisfevorite(state.wishliststate);
+                      setisfevorite(!state.wishliststate);
                       setIsOpen(state.wishliststate);
                     }
                   }}

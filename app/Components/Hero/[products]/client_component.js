@@ -145,6 +145,10 @@ export default function Products({ fillWidth, product, isfevorite }) {
                 </button>
               ))}
             </div>
+
+            <span style={{ color: "red", fontSize: "1rem" }}>
+              {state?.message}
+            </span>
           </div>
 
           {/* actions */}
@@ -155,24 +159,24 @@ export default function Products({ fillWidth, product, isfevorite }) {
               action={formAction}
             >
               {/*data for ActionFile*/}
-              <input type="hidden" name="id" value={product.id || 0} />
-              <input type="hidden" name="image" value={product.image || 0} />
-              <input type="hidden" name="dis" value={product.dis || 0} />
-              <input type="hidden" name="name" value={product.name || 0} />
-              <input type="hidden" name="price" value={product.price || 0} />
-              <input type="hidden" name="size" value={selectedSize || 0} />
+              <input type="hidden" name="id" value={product.id || ""} />
+              <input type="hidden" name="image" value={product.image || ""} />
+              <input type="hidden" name="dis" value={product.dis || ""} />
+              <input type="hidden" name="name" value={product.name || ""} />
+              <input type="hidden" name="price" value={product.price || ""} />
+              <input type="hidden" name="size" value={selectedSize || ""} />
               <input
                 type="hidden"
                 name="category"
-                value={product.category || 0}
+                value={product.category || ""}
               />
               <input
                 type="hidden"
                 name="actiontype"
-                value={actionTypeState || 0}
+                value={actionTypeState || ""}
               />
               <button
-                className={`${styles.addToCartBtn} ${AddToCart === false ? styles.activeBut : ""}`}
+                className={styles.addToCartBtn}
                 type="submit"
                 onMouseDown={() => setActionTypeState("card")}
               >
@@ -196,9 +200,6 @@ export default function Products({ fillWidth, product, isfevorite }) {
               </button>
             </form>
           </div>
-          <span style={{ color: "red", fontSize: "1rem" }}>
-            {state?.message}
-          </span>
 
           <div className={styles.ratingWrapper}>
             <div className={styles.starsContainer}>

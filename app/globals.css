@@ -1,36 +1,39 @@
 @import "tailwindcss";
 :root {
-  /* --- LIGHT MODE (نضيف، واثق، رياضي) --- */
-  --bg-main: #ffffff;       /* الخلفية الأساسية */
-  --bg-primary: #f5f5f5;    /* خلفية الأقسام الفرعية (أغمق سنة من الأبيض) */
-  --bg-card: #ffffff;       /* كروت المنتجات */
-  --bg-dis: #fcfaf2;        /* لون خلفية الوصف (بيج فاتح جداً هادي) */
+
+  --bg-main: #ffffff;       
+  --bg-primary: #f5f5f5;
+  --bg-card: #ffffff;     
+  --bg-dis: #fcfaf2;        
+  --bg-navbar:rgba(255, 255, 255, 0.404) ;     
+  --bg-searchinput:rgba(255, 255, 255, 0.25) ;       
   
-  --color-primary: #000000; /* الكلام الأساسي (أسود صريح) */
-  --color-main: #ffffff;    /* لون الكلام فوق العناصر الغامقة */
-  --color-secondary: #767677; /* رمادي أديداس الشهير للكلام الفرعي */
+  --color-primary: #000000; 
+  --color-main: #ffffff;    
+  --color-secondary: #767677; 
   
-  --text-fetch: rgba(0, 0, 0, 0.05); /* لون الخلفية أثناء الـ loading */
-  --color-sale: #e32b2b;    /* أحمر رياضي قوي للخصومات */
-  --rating-color: #2aba71;  /* النجوم في أديداس غالباً بتبقى سوداء أو ذهبي مطفي */
-  --border-color: #ebedee;  /* حدود العناصر */
+  --text-fetch: rgba(0, 0, 0, 0.05); 
+  --color-sale: #e32b2b;    
+  --rating-color: #2aba71;  
+  --border-color: #ebedee;  
 }
 
 .dark {
-  /* --- DARK MODE (فحمي، قوي، مريح للعين) --- */
 --bg-main: linear-gradient(180deg, #121212 0%, #161616 100%);
-  --bg-primary: #1a1a1a;    /* خلفية الأقسام (أفتح سنة عشان العمق) */
-  --bg-card: #1e1e1e;       /* الكروت لازم تكون أفتح من الخلفية عشان "تبرز" */
-  --bg-dis: #1c1b17;        /* خلفية الوصف (أسود مائل للزيتوني الغامق جداً) */
+  --bg-primary: #1a1a1a;   
+  --bg-card: #1e1e1e;      
+  --bg-dis: #1c1b17;  
+   --bg-navbar: rgba(0, 0, 0, 0.404);      
+  --bg-searchinput:rgba(255, 255, 255, 0.404) ;      
   
-  --color-primary: #ebebeb; /* كلام أوف وايت (أريح للعين من الأبيض الصارخ) */
-  --color-main: #000000;    /* لون الكلام داخل الزراير البيضاء */
-  --color-secondary: #a0a0a1; /* رمادي فاتح للكلام الفرعي */
+  --color-primary: #ebebeb; 
+  --color-main: #000000;    
+  --color-secondary: #a0a0a1;
   
   --text-fetch: rgba(255, 255, 255, 0.05);
-  --color-sale: #ff5f5f;    /* أحمر فاتح شوية عشان يبان ورا الأسود */
-  --rating-color: #ffb400;  /* نجوم ذهبية واضحة في الضلمة */
-  --border-color: #2c2c2c;  /* حدود غامقة لكن مرئية */
+  --color-sale: #ff5f5f;   
+  --rating-color: #ffb400;  
+  --border-color: #2c2c2c;  
 }
 
 * {
@@ -42,12 +45,12 @@
 html,
 body {
   max-width: 100vw;
-  /* إضافة الـ transition عشان النقلة بين الـ dark والـ light تكون ناعمة */
+ 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-  /* التعديل الجوهري هنا: نستخدم المتغيرات اللي أنت عرفتها فوق */
+
   background-color: var(--bg-main);
   color: var(--color-primary);
   

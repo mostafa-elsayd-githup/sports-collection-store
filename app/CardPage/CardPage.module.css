@@ -78,7 +78,7 @@
   overflow-y: auto;
 }
 .product_row {
-  position: relative;
+  position: relative;                                                                                                                                                                  
   display: flex;
   border: 1px solid var(--border-color);
   margin-bottom: 20px;

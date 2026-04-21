@@ -1,6 +1,6 @@
-"use client"; // ضيف دي في أول سطر لو مش موجودة عشان نتفادى مشاكل الرندر
+"use client"; 
 
-import "bootstrap/dist/css/bootstrap.min.css"; // تأكد من استيراد ملف الـ CSS
+import "bootstrap/dist/css/bootstrap.min.css"; 
 import { Container, Form, Button, Card, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

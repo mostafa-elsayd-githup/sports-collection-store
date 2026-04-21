@@ -1,20 +1,21 @@
 "use client";
 import styles from "./profile.module.css";
-// import NavAction from "../Navbar/NavAction";
 import { useState } from "react";
 import logoutfun from "./actionFile";
 import { useActionState } from "react";
 
-function ProfilePage({users}) {
-  console.log(users);
-  
+function ProfilePage({ users, User_statistics }) {
+  const date = new Date(users.createdAt).toLocaleDateString("eg-EG", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   const [buttontype, setbuttontype] = useState("");
   const initialstate = { messgae: "", state: null };
   const [state, formAction, pending] = useActionState(logoutfun, initialstate);
 
   return (
     <>
-      {/* <NavAction /> */}
       <div className={styles.profileWrapper}>
         {/* loader */}
         {pending && (
@@ -27,13 +28,12 @@ function ProfilePage({users}) {
             <div class="col-md-4 mb-4">
               <div class={`card ${styles.sideCard}`}>
                 <div class={`card-body text-center ${styles.card_body}`}>
-                  <div class={styles.avatarWrapper}>
-                    <i class={`fa-solid fa-users ${styles.avatarIcon}`}></i>
-                  </div>
-                  <h4 class="fw-bold mt-3">{users.name}</h4>
-                  <p>Member since {users.joinDate}</p>
-
                   <form action={formAction} onClick={(e) => e.preventDefault}>
+                    <div class={styles.avatarWrapper}>
+                      <i class={`fa-solid fa-users ${styles.avatarIcon}`}></i>     
+                    </div>
+                    <h4 class="fw-bold mt-3">{users.name}</h4>
+
                     <input type="hidden" name="buttontype" value={buttontype} />
                     <input type="hidden" name="id" value={users.id} />
                     <input type="hidden" name="name" value={users.name} />
@@ -45,7 +45,7 @@ function ProfilePage({users}) {
                     <input type="hidden" name="email" value={users.email} />
                     <div class="d-grid gap-2">
                       <button
-                        onMouseDown={() => setbuttontype("editor")}
+                        onMouseDown={() => setbuttontype("edit")}
                         class={`btn btn-outline-dark btn-sm ${styles.editbut}`}
                       >
                         <i class="fa-solid fa-pen-to-square me-2"></i> Edit
@@ -84,8 +84,8 @@ function ProfilePage({users}) {
                   </li>
                   <li class={`list-group-item py-3 ${styles.inputs}`}>
                     <div class="row">
-                      <div class="col-4 ">Location</div>
-                      <div class="col-8 fw-semibold">{users.address}</div>
+                      <div class="col-4 ">Joined</div>
+                      <div class="col-8 fw-semibold">{date}</div>
                     </div>
                   </li>
                 </ul>
@@ -102,7 +102,7 @@ function ProfilePage({users}) {
                       </div>
                       <div class="ms-3">
                         <h6 class="mb-0">Orders</h6>
-                        <span class="fw-bold h5">12</span>
+                        <span class="fw-bold h5">{User_statistics.order?.length}</span>
                       </div>
                     </div>
                   </div>
@@ -118,7 +118,9 @@ function ProfilePage({users}) {
                       </div>
                       <div class="ms-3">
                         <h6 class="mb-0 ">Wishlist</h6>
-                        <span class="fw-bold h5">5</span>
+                        <span class="fw-bold h5">
+                          {User_statistics.wishlist?.length}
+                        </span>
                       </div>
                     </div>
                   </div>

@@ -14,7 +14,7 @@ export async function loginAction(prevstate, formData) {
     }
     const users = await response.json();
     if (users.length === 0 || users[0].password !== password) {
-      return { message: "البريد الإلكتروني أو كلمة المرور غير صحيحة." };
+      return { message: "Email or Passowrd is Woring" };
     }
   
     const token = jwt.sign(

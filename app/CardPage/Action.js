@@ -1,22 +1,52 @@
-"use server"
-import { revalidatePath } from "next/cache";
+"use server";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 const DeleteCart = async (prevstate, formData) => {
   const actionTypeState = formData.get("intent");
   const id = formData.get("id");
+
+  const cookieStors = await cookies();
+  const token = cookieStors.get("token")?.value;
+  const decryption = jwt.verify(token, process.env.JWT_SECRET);
   if (actionTypeState === "delete") {
-    const res = await fetch(`http://localhost:1200/cart/${id}`, {
-      method: "DELETE",
-    });
-    revalidatePath("/CardPage");
-  } else if (actionTypeState === "clear") {
-        const res = await fetch("http://localhost:1200/cart");
-        const items = await res.json();
-        const clear = items.map((e)=>{
-            fetch(`http://localhost:1200/cart/${e.id}`, { method: "DELETE" })
-        })
-        await Promise.all(clear);
-     revalidatePath("/CardPage");
-    //  revalidatePath("/", "layout");
+    const res = await fetch(`http://localhost:1200/users/${decryption.id}`);
+
+    if (res) {
+      const userdata = await res.json();
+
+      let cart = userdata.cart || [];
+
+      const exiest = cart.some((item) => item.id === id);
+
+      if (exiest) {
+        cart = cart.filter((item) => item.id !== id);
+      }
+      await fetch(`http://localhost:1200/users/${decryption.id}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ cart: cart }),
+      });
+    }
+    revalidateTag("navbar");
   }
 };
 export default DeleteCart;
+export const clearCart = async (prevstate, formData) => {
+  const cookieStors = await cookies();
+  const token = cookieStors.get("token")?.value;
+  const decryption = jwt.verify(token, process.env.JWT_SECRET);
+  const actionTypeState = formData.get("intent");
+  if (actionTypeState === "clear") {
+    const res = await fetch(`http://localhost:1200/users/${decryption.id}`);
+    const userdata = await res.json();
+    let cart = userdata.cart || [];
+    cart = [];
+    await fetch(`http://localhost:1200/users/${decryption.id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ cart }),
+    });
+    revalidateTag("navbar")
+  }
+};

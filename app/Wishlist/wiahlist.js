@@ -9,17 +9,20 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons"; // شنطة �
 import { useActionState, useState } from "react";
 import { handelAction } from "./wishliestAction";
 import Link from "next/link";
-
+import { useOpneing } from "../RTK/storcontext";
 function Products({ wishlist }) {
+  // console.log(wishlist[0]?.image_url);
+
   const [typeButton, settypeButoon] = useState("");
   const intialstate = { massage: "", state: null };
   const [state, formAction, pending] = useActionState(
     handelAction,
     intialstate,
   );
+  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
   return (
     <div>
-      <Container className={styles.wishlist_page}>
+      <div className={styles.wishlist_page}>
         {/* loader */}
         {pending && (
           <div className={styles.overlay_loader}>
@@ -65,6 +68,11 @@ function Products({ wishlist }) {
                       name="image"
                       value={product.image || ""}
                     />
+                    <input
+                      type="hidden"
+                      name="image_url"
+                      value={product.image_url || ""}
+                    />
 
                     <input
                       type="hidden"
@@ -76,8 +84,19 @@ function Products({ wishlist }) {
                       name="category"
                       value={product.category || ""}
                     />
-                    <input type="hidden" name="sizes" value={product.sizes || ""} />
-                    <input type="hidden" name="intent" value={typeButton || ""} />
+                    {product.sizes?.map((item, index) => (
+                      <input
+                        key={index}
+                        type="hidden"
+                        name="sizes"
+                        value={item || ""}
+                      />
+                    ))}
+                    <input
+                      type="hidden"
+                      name="intent"
+                      value={typeButton || ""}
+                    />
                     <button
                       name="intent"
                       onMouseDown={() => settypeButoon("wishlist")}
@@ -96,8 +115,12 @@ function Products({ wishlist }) {
                       />
                     </button>
                     <button
-                      name="intent"
-                      onMouseDown={() => settypeButoon("cart")}
+                      type="submit"
+                      disabled={pending}
+                      onMouseDown={() => {
+                        setIsOpen(true);
+                        setSelectedProduct(product);
+                      }}
                       style={{
                         background: "none",
                         border: "none",
@@ -108,8 +131,8 @@ function Products({ wishlist }) {
                       }}
                     >
                       <FontAwesomeIcon
-                        className={styles.shopping_icon}
                         icon={faBagShopping}
+                        className={styles.icon}
                       />
                     </button>
                   </form>
@@ -166,7 +189,7 @@ function Products({ wishlist }) {
             <p>Items added to your wishlist will be saved here.</p>
           </div>
         )}
-      </Container>
+      </div>
     </div>
   );
 }

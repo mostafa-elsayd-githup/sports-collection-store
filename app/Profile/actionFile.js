@@ -8,8 +8,10 @@ export default async function logoutfun(prevent, dataform) {
 
   if (buttontype === "logout") {
     const cookiestore = await cookies();
-    const token = cookiestore.get("token")?.value;
+    cookiestore.get("token")?.value;
+    
    cookiestore.delete("token")
    redirect("/login")
+  }else if(buttontype === "edit"){
   }
 }

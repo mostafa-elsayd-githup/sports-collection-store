@@ -1,34 +1,34 @@
 "use client";
 import { useState } from "react";
 import React from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CardPage.module.css";
 import Footer from "../footer/Footre";
 import { useActionState } from "react";
-import DeleteCart from "./Action";
+import DeleteCart, { clearCart } from "./Action";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import {
-  faHeart as farHeart,
-  faEye,
-} from "@fortawesome/free-regular-svg-icons"; // Regular heart icon
 const CartPage = ({ card }) => {
   const intinaldata = { massage: "", state: null };
-  const [state, formAction, pending] = useActionState(
-    DeleteCart,
+  const [state, formAction, pending] = useActionState(DeleteCart, intinaldata);
+  const [, formActionclear, pendingclear] = useActionState(
+    clearCart,
     intinaldata,
   );
 
-  const [actionTypeState, setActionTypeState] = useState("");
+  const [ActionState, setActionState] = useState("");
+
   return (
     <>
       <Container className={styles.cart_wrapper}>
         {/* loader */}
-        {pending && (
+        {pending || pendingclear ? (
           <div className={styles.overlayaction}>
             <div className={styles.halfCircleLoader}></div>
           </div>
+        ) : (
+          ""
         )}
         <Row>
           {/* الجزء الأيسر: قائمة المنتجات */}
@@ -46,21 +46,20 @@ const CartPage = ({ card }) => {
               card.map((item) => {
                 return (
                   <div key={item.id} className={styles.product_row}>
-                    <form action={formAction}>
-                      <input
-                        type="hidden"
-                        name="intent"
-                        value={actionTypeState}
-                      />
-                      <input type="hidden" name="id" value={item.id} />
+                    <form
+                      action={formAction}
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <button
                         className={styles.delete_btn}
                         type="submit"
                         disabled={pending}
-                        onMouseDown={() => setActionTypeState("delete")}
+                        onMouseDown={() => setActionState("delete")}
                       >
                         <FontAwesomeIcon icon={faXmark} />
                       </button>
+                      <input type="hidden" name="id" value={item.id || ""} />
+                      <input type="hidden" name="intent" value={ActionState} />
                     </form>
 
                     <div className={styles.product_img}>
@@ -73,7 +72,7 @@ const CartPage = ({ card }) => {
                             <h5 className={styles.p_name}>{item.name}</h5>
                             {item.quantity >= 5 ? (
                               <span className={styles.lowStock}>
-                                Low stock: Only ({item.productId}) 
+                                Low stock: Only ({item.productId})
                               </span> // <= this logic to test only
                             ) : (
                               <span className={styles.inStock}>✓ In stock</span>
@@ -82,7 +81,7 @@ const CartPage = ({ card }) => {
                           <p className={styles.p_variant}>
                             Category :{item.category}
                           </p>
-                          <p className={styles.p_size}>Size: {item.sizes}</p>
+                          {/* <p className={styles.p_size}>Size: {item.sizes}</p> */}
                           {item.quantity > 1 && (
                             <span className="m-1">Qun : {item.quantity}</span>
                           )}
@@ -127,20 +126,26 @@ const CartPage = ({ card }) => {
                 <p>Add items to your cart to see them here.</p>
               </div>
             )}
-            {card.length > 1 && (
+
+            {card.length >= 2 ? (
               <div className="text-end mt-3">
-                <form action={formAction}>
-                  <input type="hidden" name="intent" value={actionTypeState} />
+                <form
+                  action={formActionclear}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <input type="hidden" name="intent" value={ActionState} />
                   <button
                     className={styles.clear_but}
                     type="submit"
                     disabled={pending}
-                    onMouseDown={() => setActionTypeState("clear")}
+                    onMouseDown={() => setActionState("clear")}
                   >
                     clear
                   </button>
                 </form>
               </div>
+            ) : (
+              ""
             )}
           </Col>
 

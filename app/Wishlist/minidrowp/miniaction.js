@@ -19,7 +19,7 @@ export default async function handelAction(prevstate, formData) {
   const price = formData.get("price");
   const old_price = formData.get("old_price");
   const category = formData.get("category");
-  const sizes = formData.getAll("sizes");
+  const sizes = formData.get("size");
 
   const product = {
     id,
@@ -31,11 +31,10 @@ export default async function handelAction(prevstate, formData) {
     sizes,
     quantity: 1,
   };
-console.log(product.sizes);
 
   if (actionType === "card") {
     const cartitemId = `${product.id}-${sizes}`;
-    if (!sizes || !sizes.trim() === "") {
+    if (!sizes || sizes.trim() === "") {
       return { state: true, message: "Select size first" };
     }
     try {
@@ -73,6 +72,7 @@ console.log(product.sizes);
         let wishlist = user.wishlist || [];
 
         const exists = wishlist.some((item) => item.id === product.id);
+        console.log(exists);
 
         if (exists) {
           wishlist = wishlist.filter((item) => item.id !== product.id);
@@ -89,7 +89,7 @@ console.log(product.sizes);
         );
         revalidateTag("navbar");
         if (ProductPatch.ok) {
-          return { wishliststate: exists };
+          return { wishliststate: false };
         }
       }
     } catch {

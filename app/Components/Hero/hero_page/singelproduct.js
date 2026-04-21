@@ -15,7 +15,7 @@ import { useOpneing } from "../../../RTK/storcontext";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 const SingleProduct = ({ productItem, isfevorite }) => {
-   
+  // console.log(productItem.url);
   const Router = useRouter();
   const [currentImg, setCurrentImg] = useState(productItem.image);
   const initialState = { message: "", status: null };
@@ -23,6 +23,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
     handleAction,
     initialState,
   );
+
   useEffect(() => {
     if (state?.state === 401) {
       Swal.fire({
@@ -40,7 +41,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
     }
   });
   const [actionTypeState, setActionTypeState] = useState("");
-  const { setIsOpen, setSelectedProduct, setisfevorite } = useOpneing();
+  const { setIsOpen, setSelectedProduct, setisfevorite, setselectedSize } = useOpneing();
   return (
     <Card
       className={styles.card}
@@ -60,11 +61,33 @@ const SingleProduct = ({ productItem, isfevorite }) => {
       >
         {/*data for ActionFile*/}
         <input type="hidden" name="id" value={productItem.id || ""} />
-        <input type="hidden" name="image" value={productItem.image || ""} />
+        <input type="hidden" name="image" value={productItem?.image || ""} />
+        <input
+          type="hidden"
+          name="image_Hover"
+          value={productItem?.image_Hover || ""}
+        />
+        {productItem.url?.map((item, index) => (
+          <input
+          key={index}
+            type="hidden"
+            name="image_url"
+            value={item || ""}
+          />
+          
+        ))}
+        <input
+          type="hidden"
+          name="video"
+          value={productItem.image3 || productItem.video || ""}
+        />
+        <input type="hidden" name="image4" value={productItem?.image4 || ""} />
         <input type="hidden" name="dis" value={productItem.dis || ""} />
         <input type="hidden" name="name" value={productItem.name || ""} />
         <input type="hidden" name="price" value={productItem.price || ""} />
-        <input type="hidden" name="sizes" value={productItem.sizes[0] || ""} />
+        {productItem.sizes?.map((item, index) => (
+          <input key={index} type="hidden" name="sizes" value={item || ""} />
+        ))}
         <input
           type="hidden"
           name="category"
@@ -77,7 +100,6 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           onMouseDown={() => {
             setActionTypeState("wishlist");
             setisfevorite(!isfevorite);
-            
           }}
           style={{
             background: "none",
@@ -98,7 +120,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           disabled={pending}
           onMouseDown={() => {
             setIsOpen(true);
-            setSelectedProduct(productItem);
+            setSelectedProduct(productItem)
           }}
           style={{
             background: "none",
@@ -112,9 +134,13 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           <FontAwesomeIcon icon={faBagShopping} className={styles.icon} />
         </button>
         <button
-          type="submit"
           disabled={pending}
-          onMouseDown={() => setActionTypeState("eye")}
+          onMouseDown={() => {
+            setActionTypeState("eye");
+            if (!pending) {
+              Router.push(`/Components/Hero/${productItem.id}`);
+            }
+          }}
           style={{
             background: "none",
             border: "none",
@@ -158,7 +184,7 @@ const SingleProduct = ({ productItem, isfevorite }) => {
           ))}
         </div>
       )}
-      <Card.Body>
+      <Card.Body >
         {productItem.Inventory === 0 ? (
           <span className={styles.little}>
             <span className={styles.word}>OUT</span>

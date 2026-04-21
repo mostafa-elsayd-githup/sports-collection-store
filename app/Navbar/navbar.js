@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import style from "./navbar.module.css";
 import ThemeToggle from "../button/button";
-function NavBar({ cartCount, wishlistCount }) {
+function NavBar({productCount}) {
+  
   return (
     <Navbar expand="lg" className={`fixed-top ${style.navbar_container}`}>
       <div className="container-fluid py-1 px-md-5 d-flex align-items-center">
@@ -79,15 +80,15 @@ function NavBar({ cartCount, wishlistCount }) {
 
             <Link href="/Wishlist" className={style.icon_link}>
               <i className="fa-regular fa-heart"></i>
-              {wishlistCount && wishlistCount.length ? (
-                <span className={style.badge}>{wishlistCount?.length}</span>
+              {productCount && productCount.wishlist?.length ? (
+                <span className={style.badge}>{productCount.wishlist?.length}</span>
               ) : null}
             </Link>
 
             <Link href="/CardPage" className={style.icon_link}>
               <i className="fa-solid fa-bag-shopping"></i>
-              {cartCount && cartCount.length > 0 ? (
-                <span className={style.badge}>{cartCount?.length || 0}</span>
+              {productCount && productCount.cart.length > 0 ? (
+                <span className={style.badge}>{productCount.cart?.length || 0}</span>
               ) : null}
             </Link>
           </div>
