@@ -119,7 +119,11 @@ function ProfilePage({ users, User_statistics }) {
                       <div class="ms-3">
                         <h6 class="mb-0 ">Wishlist</h6>
                         <span class="fw-bold h5">
+<<<<<<< HEAD
                           {User_statistics.wishlist?.length}
+=======
+                          {User_statistics?.length}
+>>>>>>> c9dbbef083a510ff9ff89ee2a4d06dedd27d3460
                         </span>
                       </div>
                     </div>

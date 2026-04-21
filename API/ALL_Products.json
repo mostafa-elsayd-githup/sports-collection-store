@@ -6,10 +6,14 @@
       "email": "mo@gmail.com",
       "password": "123456789",
       "role": "user",
+<<<<<<< HEAD
       "createdAt": "2026-04-13T14:45:26.779Z",
       "wishlist": [],
       "cart": [],
       "order": []
+=======
+      "createdAt": "2026-04-13T14:45:26.779Z"
+>>>>>>> c9dbbef083a510ff9ff89ee2a4d06dedd27d3460
     },
     {
       "id": "1776125229939",
@@ -17,10 +21,14 @@
       "email": "eslam@gmail.com",
       "password": "123456789",
       "role": "user",
+<<<<<<< HEAD
       "createdAt": "2026-04-14T00:07:09.939Z",
       "wishlist": [],
       "cart": [],
       "order": []
+=======
+      "createdAt": "2026-04-14T00:07:09.939Z"
+>>>>>>> c9dbbef083a510ff9ff89ee2a4d06dedd27d3460
     }
   ],
   "products": [
@@ -7947,5 +7955,54 @@
     }
   ],
   "products_child_section": [],
+<<<<<<< HEAD
   "user_statistics": []
+=======
+  "cart": [
+    {
+      "id": "257-L",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/68de0a720f76498c9c07ec848fdcdb65_9366/IH6878_00_plp_standard.jpg",
+      "name": "شبشب ADILETTE OG CF",
+      "price": "3,799.00 ",
+      "old_price": null,
+      "category": "Originals",
+      "sizes": "L",
+      "quantity": 1,
+      "productId": "257"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "263",
+      "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/4b2b8ce052bb4b70818e8283044777cd_9366/JZ9664_21_model.jpg",
+      "name": "تيشيرت ADIDAS BASKETBALL GRAPHIC",
+      "price": "2,799.00",
+      "old_price": null,
+      "category": "backt ball",
+      "sizes": "M",
+      "quantity": 1
+    },
+    {
+      "id": "250",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/7413109afe1e443b9a9836a9a46fca32_9366/JS4974_00_plp_standard.jpg",
+      "name": "ADILETTE CMFT AFA Slides",
+      "price": "3,999.00 ",
+      "old_price": null,
+      "category": "Sportswear",
+      "sizes": "M",
+      "quantity": 1
+    },
+    {
+      "id": "229",
+      "image": "https://assets.adidas.com/images/w_450,f_auto,q_auto/3ce6dc386217438ead9ee247baa978e2_9366/IG3861_HM1.jpg",
+      "name": "Dropset 3 Training حذاء",
+      "price": "9,499.00",
+      "old_price": null,
+      "category": "Gym & Training (Man)",
+      "sizes": "S"
+    }
+  ],
+  "user_statistics":[]
+  
+>>>>>>> c9dbbef083a510ff9ff89ee2a4d06dedd27d3460
 }
